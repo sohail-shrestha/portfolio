@@ -1,7 +1,110 @@
 'use client';
 import type { Experience as ExperienceType } from '@/data/portfolio';
 import { experiences } from '@/data/portfolio';
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useState } from 'react';
+
+interface ExperienceModalProps {
+  experience: ExperienceType;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const ExperienceModal = ({
+  experience,
+  isOpen,
+  onClose,
+}: ExperienceModalProps) => {
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className='fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4'
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 50 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 50 }}
+          transition={{ duration: 0.3 }}
+          className='bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto'
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Modal Header */}
+          <div className='sticky top-0 bg-white border-b border-gray-200 p-6 rounded-t-xl'>
+            <div className='flex justify-between items-start'>
+              <div>
+                <h3 className='text-2xl font-bold text-violet-600 mb-1'>
+                  {experience.title}
+                </h3>
+                <p className='text-gray-600 font-medium'>
+                  {experience.company} • {experience.location}
+                </p>
+                <span className='inline-block bg-violet-100 text-violet-700 px-3 py-1 rounded-full text-sm font-medium mt-2'>
+                  {experience.startDate} - {experience.endDate}
+                </span>
+              </div>
+              <button
+                onClick={onClose}
+                className='text-gray-400 hover:text-gray-600 transition-colors duration-200 text-2xl font-bold'
+              >
+                ×
+              </button>
+            </div>
+          </div>
+
+          {/* Modal Content */}
+          <div className='p-6'>
+            {/* All Accomplishments */}
+            <div className='mb-6'>
+              <h4 className='text-lg font-semibold text-gray-800 mb-4'>
+                Key Accomplishments
+              </h4>
+              <div className='space-y-3'>
+                {experience.description.map((desc, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className='flex items-start gap-3'
+                  >
+                    <span className='text-violet-500 mt-1 text-sm'>•</span>
+                    <p className='text-gray-600 leading-relaxed'>{desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Technologies Used */}
+            <div>
+              <h4 className='text-lg font-semibold text-gray-800 mb-4'>
+                Technologies & Tools
+              </h4>
+              <div className='flex flex-wrap gap-2'>
+                {experience.technologies.map((tech, index) => (
+                  <motion.span
+                    key={tech}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className='bg-gradient-to-r from-violet-100 to-indigo-100 text-violet-700 px-3 py-2 rounded-lg text-sm font-medium border border-violet-200'
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
 
 const ExperienceCard = ({
   experience,
@@ -10,6 +113,12 @@ const ExperienceCard = ({
   experience: ExperienceType;
   index: number;
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showMoreThreshold = 4;
+  const shouldShowMore = experience.description.length > showMoreThreshold;
+  const displayedDescriptions = shouldShowMore
+    ? experience.description.slice(0, showMoreThreshold)
+    : experience.description;
   return (
     <motion.div
       initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -78,7 +187,7 @@ const ExperienceCard = ({
             viewport={{ once: true }}
             className='space-y-3 mb-4'
           >
-            {experience.description.map((desc, descIndex) => (
+            {displayedDescriptions.map((desc, descIndex) => (
               <motion.div
                 key={descIndex}
                 initial={{ opacity: 0, x: -20 }}
@@ -96,6 +205,25 @@ const ExperienceCard = ({
                 </p>
               </motion.div>
             ))}
+
+            {shouldShowMore && (
+              <motion.button
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.2 + 0.8 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsModalOpen(true)}
+                className='text-violet-600 hover:text-violet-700 font-medium text-sm flex items-center gap-1 mt-2 transition-colors duration-200'
+              >
+                <span>
+                  Show {experience.description.length - showMoreThreshold} more
+                  accomplishments
+                </span>
+                <span className='text-xs'>→</span>
+              </motion.button>
+            )}
           </motion.div>
 
           <motion.div
@@ -124,6 +252,13 @@ const ExperienceCard = ({
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Experience Modal */}
+      <ExperienceModal
+        experience={experience}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </motion.div>
   );
 };
@@ -182,7 +317,7 @@ const Experience = () => {
             className='inline-block'
           >
             <a
-              href='/resume.pdf'
+              href='/Sohail_Shresth_CV.pdf'
               target='_blank'
               rel='noopener noreferrer'
               className='bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl'
