@@ -88,7 +88,7 @@ const ExperienceModal = ({
               <div className='flex flex-wrap gap-2'>
                 {experience.technologies.map((tech, index) => (
                   <motion.span
-                    key={tech}
+                    key={`${tech}-${index}`}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
@@ -235,7 +235,7 @@ const ExperienceCard = ({
           >
             {experience.technologies.map((tech, techIndex) => (
               <motion.span
-                key={tech}
+                key={`${tech}-${techIndex}`}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{
