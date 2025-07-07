@@ -94,6 +94,27 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://www.tootle.com.np/',
   },
+  {
+    id: '4',
+    title: 'Husslup (No longer Active)',
+    liveUrl: 'https://www.producthunt.com/products/husslup',
+    description:
+      "A social media platform for connecting Hollywood's top talent behind the camera.",
+    technologies: [
+      'React',
+      'React Native',
+      'TypeScript',
+      'Node.js',
+      'Nest.js',
+      'PostgreSQL',
+      'Redis',
+      'Docker',
+      'AWS',
+      'OpenSearch',
+      'Next.js',
+      'SCSS',
+    ],
+  },
 ];
 
 export const experiences: Experience[] = [
