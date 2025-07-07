@@ -19,7 +19,7 @@ const ProjectCard = ({
       className='bg-white rounded-xl shadow-lg overflow-hidden card-hover group'
     >
       {/* Project Image/Icon */}
-      <div className='h-48 bg-gradient-to-br from-violet-400 to-indigo-500 flex items-center justify-center text-6xl text-white relative overflow-hidden'>
+      <div className='h-32 xs:h-40 sm:h-48 bg-gradient-to-br from-violet-400 to-indigo-500 flex items-center justify-center text-4xl xs:text-5xl sm:text-6xl text-white relative overflow-hidden'>
         <motion.div
           whileHover={{ scale: 1.1, rotate: 5 }}
           transition={{ duration: 0.3 }}
@@ -29,13 +29,13 @@ const ProjectCard = ({
         <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300'></div>
       </div>
 
-      <div className='p-6'>
+      <div className='p-4 xs:p-5 sm:p-6'>
         <motion.h3
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
           viewport={{ once: true }}
-          className='text-xl xs:text-2xl font-bold text-gray-800 mb-3 group-hover:text-violet-600 transition-colors duration-300'
+          className='text-lg xs:text-xl sm:text-2xl font-bold text-gray-800 mb-2 xs:mb-3 group-hover:text-violet-600 transition-colors duration-300'
         >
           {project.title}
         </motion.h3>
@@ -45,7 +45,7 @@ const ProjectCard = ({
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
           viewport={{ once: true }}
-          className='text-gray-600 mb-4 text-sm xs:text-base'
+          className='text-gray-600 mb-3 xs:mb-4 text-sm leading-relaxed'
         >
           {project.description}
         </motion.p>
@@ -55,7 +55,7 @@ const ProjectCard = ({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
           viewport={{ once: true }}
-          className='flex flex-wrap gap-2 mb-4'
+          className='flex flex-wrap gap-1.5 xs:gap-2 mb-3 xs:mb-4'
         >
           {project.technologies.map((tech, techIndex) => (
             <motion.span
@@ -68,7 +68,7 @@ const ProjectCard = ({
               }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className='bg-violet-100 text-violet-700 px-3 py-1 rounded-full text-xs xs:text-sm font-medium'
+              className='bg-violet-100 text-violet-700 px-2 xs:px-3 py-1 rounded-full text-xs font-medium'
             >
               {tech}
             </motion.span>
@@ -80,7 +80,7 @@ const ProjectCard = ({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
           viewport={{ once: true }}
-          className='flex gap-3'
+          className='flex flex-col xs:flex-row gap-2 xs:gap-3'
         >
           {project.githubUrl && (
             <motion.a
@@ -89,7 +89,7 @@ const ProjectCard = ({
               rel='noopener noreferrer'
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className='flex-1 bg-gray-800 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-gray-700 transition-colors duration-300 text-sm xs:text-base'
+              className='flex-1 bg-gray-800 text-white py-2.5 xs:py-2 px-4 rounded-lg text-center font-medium hover:bg-gray-700 transition-colors duration-300 text-sm'
             >
               <span className='mr-2'>🐙</span>Code
             </motion.a>
@@ -101,7 +101,7 @@ const ProjectCard = ({
               rel='noopener noreferrer'
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className='flex-1 bg-violet-600 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-violet-700 transition-colors duration-300 text-sm xs:text-base'
+              className='flex-1 bg-violet-600 text-white py-2.5 xs:py-2 px-4 rounded-lg text-center font-medium hover:bg-violet-700 transition-colors duration-300 text-sm'
             >
               <span className='mr-2'>🚀</span>Live
             </motion.a>
@@ -124,18 +124,18 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className='text-center mb-16'
+          className='text-center mb-12 xs:mb-16'
         >
-          <h2 className='text-4xl xs:text-5xl sm:text-6xl font-bold text-gradient mb-6'>
+          <h2 className='text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-gradient mb-4 xs:mb-6'>
             Featured Projects
           </h2>
-          <div className='w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 mx-auto mb-6'></div>
+          <div className='w-20 xs:w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 mx-auto mb-4 xs:mb-6'></div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className='text-gray-600 max-w-2xl mx-auto text-base xs:text-lg'
+            className='text-gray-600 max-w-2xl mx-auto text-sm xs:text-base sm:text-lg px-4'
           >
             Here are some of my recent projects that showcase my skills in
             full-stack development, modern frameworks, and creative
@@ -143,7 +143,7 @@ const Projects = () => {
           </motion.p>
         </motion.div>
 
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
@@ -155,28 +155,28 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className='text-center mt-16'
+          className='text-center mt-12 xs:mt-16'
         >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
             viewport={{ once: true }}
-            className='text-gray-600 mb-6 text-lg'
+            className='text-gray-600 mb-4 xs:mb-6 text-base xs:text-lg px-4'
           >
             Have an interesting project in mind?
           </motion.p>
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className='inline-block'
+            className='inline-block px-4'
           >
             <a
               href={aboutMe.getEmailLink()}
-              className='bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl'
+              className='block bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-6 xs:px-8 py-3 xs:py-4 rounded-lg font-semibold text-base xs:text-lg hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl text-center'
             >
-              <span className='mr-2'>📧</span>
-              Let&apos;s create something incredible together
+              <span className='mr-2'>💬</span>
+              Let&apos;s Work Together
             </a>
           </motion.div>
         </motion.div>
