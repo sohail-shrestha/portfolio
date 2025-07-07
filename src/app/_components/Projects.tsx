@@ -1,6 +1,6 @@
 'use client';
 import type { Project } from '@/data/portfolio';
-import { projects } from '@/data/portfolio';
+import { aboutMe, projects } from '@/data/portfolio';
 import { motion } from 'motion/react';
 
 const ProjectCard = ({
@@ -157,19 +157,26 @@ const Projects = () => {
           viewport={{ once: true }}
           className='text-center mt-16'
         >
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            viewport={{ once: true }}
+            className='text-gray-600 mb-6 text-lg'
+          >
+            Have an interesting project in mind?
+          </motion.p>
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className='inline-block'
           >
             <a
-              href='https://github.com/sohailshrestha'
-              target='_blank'
-              rel='noopener noreferrer'
+              href={aboutMe.getEmailLink()}
               className='bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl'
             >
-              <span className='mr-2'>👀</span>
-              View More Projects
+              <span className='mr-2'>📧</span>
+              Let&apos;s create something incredible together
             </a>
           </motion.div>
         </motion.div>

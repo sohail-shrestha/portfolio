@@ -322,6 +322,27 @@ export const achievements = {
 
 export const testimonials = [];
 
+export const emailTemplate = {
+  subject: "Let's Collaborate – Fullstack Opportunity Inquiry",
+  body: `Hi Sohail,
+
+I came across your portfolio and was impressed with your work! I'd love to explore a potential collaboration or opportunity with you.
+
+To help you better understand the role, here are a few quick details:
+
+- The position is [Full-time / Contract], and the contract duration is [if applicable].
+- The company is [Product-based / Service-based].
+- Our current tech stack includes [mention relevant technologies].
+- The role involves [brief description of responsibilities].
+- Salary range: [mention range if applicable].
+
+I'd love to schedule a quick call to discuss this further. Are you available for a conversation this week?
+
+Looking forward to hearing from you!
+
+Best regards,`,
+};
+
 export const aboutMe = {
   name: 'Sohail Shrestha',
   title: 'Senior Software Engineer',
@@ -330,4 +351,9 @@ export const aboutMe = {
   github: 'https://github.com/sohail-shrestha',
   linkedin: 'https://www.linkedin.com/in/sohail-shrestha-84a04a143/',
   resume: '/Sohail_Shresth_CV.pdf',
+  getEmailLink() {
+    const encodedSubject = encodeURIComponent(emailTemplate.subject);
+    const encodedBody = encodeURIComponent(emailTemplate.body);
+    return `mailto:${this.email}?subject=${encodedSubject}&body=${encodedBody}`;
+  },
 };

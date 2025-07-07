@@ -161,7 +161,7 @@ const Hero = () => {
           {[
             { url: aboutMe.github, icon: '🐙', label: 'GitHub' },
             { url: aboutMe.linkedin, icon: '💼', label: 'LinkedIn' },
-            { url: `mailto:${aboutMe.email}`, icon: '📧', label: 'Email' },
+            { url: aboutMe.getEmailLink(), icon: '📧', label: 'Email' },
           ].map((social, index) => (
             <motion.a
               key={social.label}

@@ -56,7 +56,7 @@ const Footer = () => {
             {[
               { url: aboutMe.github, icon: '🐙', label: 'GitHub' },
               { url: aboutMe.linkedin, icon: '💼', label: 'LinkedIn' },
-              { url: `mailto:${aboutMe.email}`, icon: '📧', label: 'Email' },
+              { url: aboutMe.getEmailLink(), icon: '📧', label: 'Email' },
             ].map((social, index) => (
               <motion.a
                 key={social.label}
@@ -86,7 +86,7 @@ const Footer = () => {
             className='mb-8'
           >
             <motion.a
-              href={`mailto:${aboutMe.email}`}
+              href={aboutMe.getEmailLink()}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className='inline-block bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl'
