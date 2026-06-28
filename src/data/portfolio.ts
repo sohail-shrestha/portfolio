@@ -46,6 +46,23 @@ export interface Certification {
 
 export const projects: Project[] = [
   {
+    id: '5',
+    title: 'Quintace',
+    liveUrl: 'https://quintace.ai/',
+    description: 'A platform to practice and play poker.',
+    technologies: [
+      'Vue.js',
+      'Node.js',
+      'fastify',
+      'PostgreSQL',
+      'Redis',
+      'Docker',
+      'AWS',
+      'Typescript',
+      'Amazon SQS',
+    ],
+  },
+  {
     id: '1',
     title: 'G LNK',
     description:
@@ -113,23 +130,6 @@ export const projects: Project[] = [
       'OpenSearch',
       'Next.js',
       'SCSS',
-    ],
-  },
-  {
-    id: '5',
-    title: 'Quintace',
-    liveUrl: 'https://quintace.ai/',
-    description: 'A platform to practice and play poker.',
-    technologies: [
-      'Vue.js',
-      'Node.js',
-      'fastify',
-      'PostgreSQL',
-      'Redis',
-      'Docker',
-      'AWS',
-      'Typescript',
-      'Amazon SQS',
     ],
   },
 ];
