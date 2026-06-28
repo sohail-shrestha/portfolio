@@ -317,7 +317,7 @@ const Experience = () => {
             className='inline-block'
           >
             <a
-              href='/Sohail_Shresth_CV.pdf'
+              href='/Sohail_CV.pdf'
               target='_blank'
               rel='noopener noreferrer'
               className='bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl'
