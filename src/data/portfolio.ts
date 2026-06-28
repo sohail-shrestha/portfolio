@@ -115,16 +115,58 @@ export const projects: Project[] = [
       'SCSS',
     ],
   },
+  {
+    id: '5',
+    title: 'Quintace',
+    liveUrl: 'https://quintace.ai/',
+    description: 'A platform to practice and play poker.',
+    technologies: [
+      'Vue.js',
+      'Node.js',
+      'fastify',
+      'PostgreSQL',
+      'Redis',
+      'Docker',
+      'AWS',
+      'Typescript',
+      'Amazon SQS',
+    ],
+  },
 ];
 
 export const experiences: Experience[] = [
+  {
+    id: '5',
+    title: 'Senior Software Engineer',
+    company: 'A5 Labs',
+    location: 'Foster City, California, United States (Remote)',
+    startDate: 'October 2025',
+    endDate: 'May 2026',
+    description: [
+      'Drove a monorepo-wide TypeScript initiative across 6+ packages, reducing production type-related bugs by 98%.',
+      'Delivered a zero-maintenance translation solution in 30 minutes, opening China market and saving weeks of cross-team work.',
+      'Built reusable lit components compatible with React and Vue, eliminating duplicate UI work across 3+ codebases.',
+    ],
+    technologies: [
+      'Typescript',
+      'Vue',
+      'Lit',
+      'Node.js',
+      'Next.js',
+      'Docker',
+      'fastify',
+      'PostgreSQL',
+      'Redis',
+      'AWS',
+    ],
+  },
   {
     id: '1',
     title: 'Senior Software Engineer',
     company: 'G LNK (YC W25)',
     location: 'New York, United States (Remote)',
     startDate: 'Jun 2024',
-    endDate: 'Present',
+    endDate: 'September 2025',
     description: [
       'Built an MVP in one week with a team of two, enabling the company to secure Y Combinator funding.',
       'Created foundational front-end and back-end architecture, which scaled across all future projects.',
@@ -195,7 +237,6 @@ export const experiences: Experience[] = [
       'React',
       'TypeScript',
       'SCSS',
-
       'Jest',
       'React Native',
       'Nest.js',
@@ -350,7 +391,7 @@ export const aboutMe = {
   email: 'sohailshrestha2@gmail.com',
   github: 'https://github.com/sohail-shrestha',
   linkedin: 'https://www.linkedin.com/in/sohail-shrestha-84a04a143/',
-  resume: '/Sohail_Shresth_CV.pdf',
+  resume: '/Sohail_CV.pdf',
   getEmailLink() {
     const encodedSubject = encodeURIComponent(emailTemplate.subject);
     const encodedBody = encodeURIComponent(emailTemplate.body);
