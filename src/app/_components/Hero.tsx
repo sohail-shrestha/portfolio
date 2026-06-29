@@ -1,6 +1,8 @@
 'use client';
 import { aboutMe } from '@/data/portfolio';
 import { motion } from 'motion/react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -159,9 +161,9 @@ const Hero = () => {
           className='flex justify-center gap-6 mt-12'
         >
           {[
-            { url: aboutMe.github, icon: '🐙', label: 'GitHub' },
-            { url: aboutMe.linkedin, icon: '💼', label: 'LinkedIn' },
-            { url: aboutMe.getEmailLink(), icon: '📧', label: 'Email' },
+            { url: aboutMe.github, icon: <FaGithub size={20} />, label: 'GitHub' },
+            { url: aboutMe.linkedin, icon: <FaLinkedin size={20} />, label: 'LinkedIn' },
+            { url: aboutMe.getEmailLink(), icon: <SiGmail size={20} />, label: 'Email' },
           ].map((social, index) => (
             <motion.a
               key={social.label}
