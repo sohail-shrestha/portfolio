@@ -1,0 +1,99 @@
+{
+  "about": {
+    "title": "Ingénieur logiciel senior",
+    "description": "Je suis un ingénieur logiciel senior passionné avec plus de 8 ans d'expérience dans la création d'applications web évolutives et la direction d'équipes de développement. Je me spécialise dans le développement full-stack avec une expertise dans les frameworks JavaScript modernes, l'architecture cloud et les microservices. J'ai un bilan éprouvé de livraison de solutions logicielles de haute qualité servant des millions d'utilisateurs, tout en encadrant des équipes et en stimulant l'excellence technique."
+  },
+  "emailTemplate": {
+    "subject": "Collaborons – Demande d'opportunité Fullstack",
+    "body": "Bonjour Sohail,\n\nJ'ai découvert votre portfolio et j'ai été impressionné par votre travail ! J'aimerais explorer une collaboration ou une opportunité potentielle avec vous.\n\nPour vous aider à mieux comprendre le poste, voici quelques détails rapides :\n\n- Le poste est [Temps plein / Contrat], et la durée du contrat est [si applicable].\n- L'entreprise est [Orientée produit / Orientée service].\n- Notre stack technologique actuel comprend [mentionner les technologies pertinentes].\n- Le rôle implique [brève description des responsabilités].\n- Fourchette salariale : [mentionner la fourchette si applicable].\n\nJ'aimerais organiser un appel rapide pour en discuter davantage. Êtes-vous disponible pour une conversation cette semaine ?\n\nDans l'attente de votre réponse !\n\nCordialement,"
+  },
+  "projects": {
+    "5": {
+      "title": "Quintace",
+      "description": "Une plateforme pour s'entraîner et jouer au poker."
+    },
+    "1": {
+      "title": "G LNK",
+      "description": "Une plateforme de recrutement de prestataires de soins de santé avec l'aide de l'IA."
+    },
+    "2": {
+      "title": "Mynth",
+      "description": "Une plateforme d'échange d'actifs numériques sur la blockchain."
+    },
+    "3": {
+      "title": "Tootle",
+      "description": "La première application de covoiturage du Népal."
+    },
+    "4": {
+      "title": "Husslup (Plus en activité)",
+      "description": "Une plateforme de médias sociaux pour connecter les meilleurs talents de Hollywood derrière la caméra."
+    }
+  },
+  "experiences": {
+    "5": {
+      "title": "Ingénieur logiciel senior",
+      "company": "A5 Labs",
+      "description": [
+        "Mené une initiative TypeScript à l'échelle du monorepo sur plus de 6 packages, réduisant les bugs liés aux types en production de 98 %.",
+        "Livré une solution de traduction sans maintenance en 30 minutes, ouvrant le marché chinois et économisant des semaines de travail inter-équipes.",
+        "Construit des composants Lit réutilisables compatibles avec React et Vue, éliminant le travail UI dupliqué dans plus de 3 bases de code."
+      ]
+    },
+    "1": {
+      "title": "Ingénieur logiciel senior",
+      "company": "G LNK (YC W25)",
+      "description": [
+        "Développé un MVP en une semaine avec une équipe de deux personnes, permettant à l'entreprise d'obtenir un financement Y Combinator.",
+        "Créé l'architecture fondamentale front-end et back-end, qui a évolué sur tous les projets futurs.",
+        "Remplacé un SDK OpenAPI monolithique par des microservices, éliminant les goulots d'étranglement et améliorant les performances de plus de 50 %.",
+        "Développé une recherche alimentée par l'IA et un tableau Kanban avec mise en cache Redis pour gérer la latence, réduisant les temps de chargement de 10s à 0s."
+      ]
+    },
+    "2": {
+      "title": "Ingénieur logiciel senior",
+      "company": "Mynth",
+      "description": [
+        "Orchestré l'infrastructure cloud dans Kubernetes avec kustomize, démontrant une maîtrise des techniques modernes de gestion d'infrastructure.",
+        "Mis en œuvre des mesures robustes de sécurité des données en utilisant Vault, protégeant les informations sensibles et assurant la conformité aux normes industrielles.",
+        "Configuré des solutions de journalisation complètes avec Datadog sur l'ensemble du cluster Kubernetes pour une surveillance en temps réel.",
+        "Maîtrisé Python en un jour pour créer un microservice de publication Discord, tout en enregistrant méticuleusement les versions d'images pour différents environnements.",
+        "Établi un pipeline CI/CD rationalisé avec ArgoCD, automatisant la livraison logicielle.",
+        "Implémenté Payload CRM avec l'authentification Auth0, surmontant les défis d'intégration pour assurer une fonctionnalité transparente.",
+        "Créé un outil de mise à jour d'images en Node.js qui met automatiquement à jour les images sur Kubernetes et surveille les versions avec un cronjob Python personnalisé."
+      ]
+    },
+    "3": {
+      "title": "Ingénieur logiciel senior",
+      "company": "Fusemachines",
+      "description": [
+        "Utilisé React Native pour le mobile et NestJS pour le backend, livrant un MVP de zéro en 6 mois avec seulement 2 développeurs.",
+        "Adoption rapide de frameworks tels que Flutter, React Native et NestJS.",
+        "Infrastructure architecturée pour OpenSearch, réduisant le temps de recherche sur la plateforme d'environ 10 secondes à quelques millisecondes.",
+        "Atteint 100 % d'utilisateurs sans plantage avec 4 000 utilisateurs de juillet 2022 à aujourd'hui selon les analyses Firebase, Play Store et App Store.",
+        "Architecturé et implémenté l'infrastructure d'authentification et d'autorisation avec l'équipe, rendant le produit plus sécurisé.",
+        "Implémenté et architecturé plus de 50 % de toutes les fonctionnalités de l'application depuis zéro."
+      ]
+    },
+    "4": {
+      "title": "Ingénieur logiciel",
+      "company": "Tootle",
+      "description": [
+        "Augmenté la stabilité de l'application de 60 % à plus de 90 %.",
+        "Mis à jour toutes les technologies utilisées dans l'application pour faciliter la maintenance.",
+        "Réduit la facturation de géocodage inversé Google de plus de 50 %.",
+        "Introduit une architecture adéquate dans l'application, facilitant la maintenance et l'implémentation de nouvelles fonctionnalités.",
+        "Créé une interface utilisateur très personnalisée en utilisant l'API Canvas sur Android natif."
+      ]
+    }
+  },
+  "skills": {
+    "categories": {
+      "frontendDevelopment": "Développement Frontend",
+      "backendDevelopment": "Développement Backend",
+      "databasesAndStorage": "Bases de données & Stockage",
+      "cloudAndDevOps": "Cloud & DevOps",
+      "programmingLanguages": "Langages de programmation",
+      "toolsAndMethodologies": "Outils & Méthodologies"
+    }
+  }
+}

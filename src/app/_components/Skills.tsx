@@ -2,8 +2,25 @@
 import type { Skill } from '@/data/portfolio';
 import { skills } from '@/data/portfolio';
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
+
+const CATEGORY_KEYS: Record<string, string> = {
+  'Frontend Development': 'frontendDevelopment',
+  'Backend Development': 'backendDevelopment',
+  'Databases & Storage': 'databasesAndStorage',
+  'Cloud & DevOps': 'cloudAndDevOps',
+  'Programming Languages': 'programmingLanguages',
+  'Tools & Methodologies': 'toolsAndMethodologies',
+};
 
 const SkillCategory = ({ skill, index }: { skill: Skill; index: number }) => {
+  const { t } = useTranslation(['ui', 'portfolio']);
+  const td = t as unknown as (key: string, opts?: Record<string, unknown>) => unknown;
+  const categoryKey = CATEGORY_KEYS[skill.category] ?? skill.category;
+  const categoryLabel = td(`portfolio:skills.categories.${categoryKey}`, {
+    defaultValue: skill.category,
+  }) as string;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -25,7 +42,7 @@ const SkillCategory = ({ skill, index }: { skill: Skill; index: number }) => {
         >
           {index === 0 ? '🎨' : index === 1 ? '⚙️' : index === 2 ? '🚀' : '💻'}
         </motion.span>
-        {skill.category}
+        {categoryLabel}
       </motion.h3>
 
       <div className='grid grid-cols-2 gap-3'>
@@ -50,7 +67,27 @@ const SkillCategory = ({ skill, index }: { skill: Skill; index: number }) => {
   );
 };
 
+const ADDITIONAL_SKILL_KEYS = [
+  'agileScrum',
+  'codeReview',
+  'mentoring',
+  'teamLeadership',
+  'cicd',
+  'testing',
+  'performanceOptimization',
+  'securityBestPractices',
+] as const;
+
+const COMPETENCY_KEYS = [
+  { key: 'frontendDevelopment', level: 95 },
+  { key: 'backendDevelopment', level: 90 },
+  { key: 'systemDesign', level: 85 },
+  { key: 'problemSolving', level: 98 },
+] as const;
+
 const Skills = () => {
+  const { t } = useTranslation(['ui', 'portfolio']);
+
   return (
     <section
       id='skills'
@@ -65,7 +102,7 @@ const Skills = () => {
           className='text-center mb-16'
         >
           <h2 className='text-4xl xs:text-5xl sm:text-6xl font-bold text-gradient mb-6'>
-            Skills & Technologies
+            {t('skills.heading')}
           </h2>
           <div className='w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 mx-auto mb-6'></div>
           <motion.p
@@ -75,8 +112,7 @@ const Skills = () => {
             viewport={{ once: true }}
             className='text-gray-600 max-w-2xl mx-auto text-base xs:text-lg'
           >
-            A comprehensive overview of my technical expertise and the tools I
-            use to bring ideas to life.
+            {t('skills.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -108,22 +144,13 @@ const Skills = () => {
             >
               ⭐
             </motion.span>
-            Additional Expertise
+            {t('skills.additionalExpertise')}
           </motion.h3>
 
           <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-            {[
-              'Agile/Scrum',
-              'Code Review',
-              'Mentoring',
-              'Team Leadership',
-              'CI/CD',
-              'Testing',
-              'Performance Optimization',
-              'Security Best Practices',
-            ].map((expertise, index) => (
+            {ADDITIONAL_SKILL_KEYS.map((key, index) => (
               <motion.div
-                key={expertise}
+                key={key}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.8 + index * 0.05 }}
@@ -131,7 +158,7 @@ const Skills = () => {
                 whileHover={{ scale: 1.05 }}
                 className='bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 px-4 py-3 rounded-lg text-xs xs:text-sm font-medium text-center hover:from-violet-100 hover:to-indigo-100 hover:text-violet-700 transition-all duration-300 cursor-pointer'
               >
-                {expertise}
+                {t(`skills.additionalSkills.${key}` as const)}
               </motion.div>
             ))}
           </div>
@@ -152,18 +179,13 @@ const Skills = () => {
             viewport={{ once: true }}
             className='text-xl xs:text-2xl font-bold text-gray-800 mb-6 text-center'
           >
-            🎯 Core Competencies
+            🎯 {t('skills.coreCompetencies')}
           </motion.h3>
 
           <div className='space-y-6'>
-            {[
-              { skill: 'Frontend Development', level: 95 },
-              { skill: 'Backend Development', level: 90 },
-              { skill: 'System Design', level: 85 },
-              { skill: 'Problem Solving', level: 98 },
-            ].map((item, index) => (
+            {COMPETENCY_KEYS.map((item, index) => (
               <motion.div
-                key={item.skill}
+                key={item.key}
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
@@ -171,7 +193,7 @@ const Skills = () => {
               >
                 <div className='flex justify-between mb-2'>
                   <span className='text-gray-700 font-medium text-sm xs:text-base'>
-                    {item.skill}
+                    {t(`skills.competencies.${item.key}` as const)}
                   </span>
                   <span className='text-violet-600 font-bold text-sm xs:text-base'>
                     {item.level}%

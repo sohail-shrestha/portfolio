@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "experience": "Expérience",
+    "projects": "Projets",
+    "skills": "Compétences"
+  },
+  "footer": {
+    "tagline": "Construire l'avenir avec du code, une ligne à la fois. Créons quelque chose d'incroyable ensemble.",
+    "cta": "Travaillons ensemble",
+    "copyright": "© {{year}} {{name}}. Tous droits réservés. Créé avec ❤️ et beaucoup de ☕"
+  },
+  "hero": {
+    "greeting": "Bonjour, je suis",
+    "tagline": "Je crée de belles applications web fonctionnelles et évolutives qui font la différence.",
+    "viewWork": "Voir mon travail",
+    "aboutMe": "À propos de moi",
+    "scrollDown": "Défiler vers le bas"
+  },
+  "about": {
+    "heading": "À propos de moi",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "CV",
+    "stats": {
+      "yearsExperience": "Années d'expérience",
+      "projectsCompleted": "Projets réalisés",
+      "technologies": "Technologies",
+      "clientSatisfaction": "Satisfaction client"
+    }
+  },
+  "experience": {
+    "heading": "Expérience professionnelle",
+    "subtitle": "Mon parcours en tant qu'ingénieur logiciel, en développant des applications évolutives et en dirigeant des équipes de développement.",
+    "keyAccomplishments": "Réalisations clés",
+    "technologiesTools": "Technologies & Outils",
+    "showMore": "Afficher {{count}} réalisations supplémentaires",
+    "downloadResume": "Télécharger le CV complet"
+  },
+  "projects": {
+    "heading": "Projets phares",
+    "subtitle": "Voici quelques-uns de mes projets récents qui illustrent mes compétences en développement full-stack, frameworks modernes et résolution créative de problèmes.",
+    "ctaQuestion": "Vous avez un projet intéressant en tête ?",
+    "cta": "Travaillons ensemble",
+    "code": "Code",
+    "live": "Live"
+  },
+  "skills": {
+    "heading": "Compétences & Technologies",
+    "subtitle": "Un aperçu complet de mon expertise technique et des outils que j'utilise pour donner vie aux idées.",
+    "additionalExpertise": "Expertise supplémentaire",
+    "coreCompetencies": "Compétences clés",
+    "competencies": {
+      "frontendDevelopment": "Développement Frontend",
+      "backendDevelopment": "Développement Backend",
+      "systemDesign": "Conception de systèmes",
+      "problemSolving": "Résolution de problèmes"
+    },
+    "additionalSkills": {
+      "agileScrum": "Agile/Scrum",
+      "codeReview": "Revue de code",
+      "mentoring": "Mentorat",
+      "teamLeadership": "Leadership d'équipe",
+      "cicd": "CI/CD",
+      "testing": "Tests",
+      "performanceOptimization": "Optimisation des performances",
+      "securityBestPractices": "Bonnes pratiques de sécurité"
+    }
+  }
+}

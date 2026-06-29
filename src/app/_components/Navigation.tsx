@@ -1,20 +1,24 @@
 'use client';
+import LanguageSwitcher from '@/i18n/LanguageSwitcher';
 import { motion } from 'motion/react';
 import { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Navigation = () => {
+  const { t } = useTranslation('ui');
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = useMemo(
-    () => [
-      { name: 'Home', href: '#home', emoji: '🏠' },
-      { name: 'About', href: '#about', emoji: '👨‍💻' },
-      { name: 'Experience', href: '#experience', emoji: '💼' },
-      { name: 'Projects', href: '#projects', emoji: '🚀' },
-      { name: 'Skills', href: '#skills', emoji: '⚡' },
-    ],
+    () =>
+      [
+        { key: 'home', href: '#home', emoji: '🏠' },
+        { key: 'about', href: '#about', emoji: '👨‍💻' },
+        { key: 'experience', href: '#experience', emoji: '💼' },
+        { key: 'projects', href: '#projects', emoji: '🚀' },
+        { key: 'skills', href: '#skills', emoji: '⚡' },
+      ] as const,
     []
   );
 
@@ -22,7 +26,6 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Update active section based on scroll position
       const sections = navItems.map((item) => item.href.substring(1));
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
@@ -87,7 +90,7 @@ const Navigation = () => {
           <div className='hidden md:flex items-center space-x-1'>
             {navItems.map((item, index) => (
               <motion.button
-                key={item.name}
+                key={item.key}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -103,26 +106,30 @@ const Navigation = () => {
                 }`}
               >
                 <span className='mr-2'>{item.emoji}</span>
-                {item.name}
+                {t(`nav.${item.key}`)}
               </motion.button>
             ))}
+            <LanguageSwitcher isScrolled={isScrolled} />
           </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-lg ${
-              isScrolled ? 'text-gray-700' : 'text-white'
-            }`}
-          >
-            <motion.div
-              animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
+          {/* Mobile: language switcher + hamburger */}
+          <div className='md:hidden flex items-center gap-1'>
+            <LanguageSwitcher isScrolled={isScrolled} />
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`p-2 rounded-lg ${
+                isScrolled ? 'text-gray-700' : 'text-white'
+              }`}
             >
-              {isMobileMenuOpen ? '✕' : '☰'}
-            </motion.div>
-          </motion.button>
+              <motion.div
+                animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isMobileMenuOpen ? '✕' : '☰'}
+              </motion.div>
+            </motion.button>
+          </div>
         </div>
       </div>
 
@@ -139,7 +146,7 @@ const Navigation = () => {
         <div className='px-4 py-2 space-y-1'>
           {navItems.map((item, index) => (
             <motion.button
-              key={item.name}
+              key={item.key}
               initial={{ opacity: 0, x: -20 }}
               animate={{
                 opacity: isMobileMenuOpen ? 1 : 0,
@@ -155,7 +162,7 @@ const Navigation = () => {
               }`}
             >
               <span className='mr-2'>{item.emoji}</span>
-              {item.name}
+              {t(`nav.${item.key}`)}
             </motion.button>
           ))}
         </div>

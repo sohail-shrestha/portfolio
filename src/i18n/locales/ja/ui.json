@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "about": "自己紹介",
+    "experience": "経験",
+    "projects": "プロジェクト",
+    "skills": "スキル"
+  },
+  "footer": {
+    "tagline": "コードで未来を築いています、一行ずつ。一緒に素晴らしいものを作りましょう。",
+    "cta": "一緒に仕事をしましょう",
+    "copyright": "© {{year}} {{name}}。全著作権所有。❤️と☕で制作"
+  },
+  "hero": {
+    "greeting": "こんにちは、私は",
+    "tagline": "美しく、機能的でスケーラブルなウェブアプリケーションを作成しています。",
+    "viewWork": "作品を見る",
+    "aboutMe": "自己紹介",
+    "scrollDown": "スクロールダウン"
+  },
+  "about": {
+    "heading": "自己紹介",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "履歴書",
+    "stats": {
+      "yearsExperience": "年の経験",
+      "projectsCompleted": "完了したプロジェクト",
+      "technologies": "技術",
+      "clientSatisfaction": "顧客満足度"
+    }
+  },
+  "experience": {
+    "heading": "職務経歴",
+    "subtitle": "スケーラブルなアプリケーションを構築し、開発チームをリードするソフトウェアエンジニアとしての歩み。",
+    "keyAccomplishments": "主な実績",
+    "technologiesTools": "技術・ツール",
+    "showMore": "{{count}}件の実績をさらに表示",
+    "downloadResume": "履歴書をダウンロード"
+  },
+  "projects": {
+    "heading": "注目プロジェクト",
+    "subtitle": "フルスタック開発、最新フレームワーク、創造的な問題解決における私のスキルを紹介する最近のプロジェクトです。",
+    "ctaQuestion": "面白いプロジェクトがありますか？",
+    "cta": "一緒に仕事をしましょう",
+    "code": "コード",
+    "live": "ライブ"
+  },
+  "skills": {
+    "heading": "スキルと技術",
+    "subtitle": "私の技術的専門知識とアイデアを実現するために使用するツールの包括的な概要。",
+    "additionalExpertise": "追加の専門知識",
+    "coreCompetencies": "コアコンピテンシー",
+    "competencies": {
+      "frontendDevelopment": "フロントエンド開発",
+      "backendDevelopment": "バックエンド開発",
+      "systemDesign": "システム設計",
+      "problemSolving": "問題解決"
+    },
+    "additionalSkills": {
+      "agileScrum": "アジャイル/スクラム",
+      "codeReview": "コードレビュー",
+      "mentoring": "メンタリング",
+      "teamLeadership": "チームリーダーシップ",
+      "cicd": "CI/CD",
+      "testing": "テスト",
+      "performanceOptimization": "パフォーマンス最適化",
+      "securityBestPractices": "セキュリティベストプラクティス"
+    }
+  }
+}

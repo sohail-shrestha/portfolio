@@ -1,0 +1,99 @@
+{
+  "about": {
+    "title": "高级软件工程师",
+    "description": "我是一名充满热情的高级软件工程师，拥有 8 年以上构建可扩展 Web 应用程序和领导开发团队的经验。我专注于全栈开发，精通现代 JavaScript 框架、云架构和微服务。我有着出色的记录，能够交付服务数百万用户的高质量软件解决方案，同时指导团队并推动技术卓越。"
+  },
+  "emailTemplate": {
+    "subject": "合作意向 – 全栈机会咨询",
+    "body": "您好，Sohail，\n\n我浏览了您的作品集，对您的工作印象深刻！我很想探讨与您合作或共事的可能性。\n\n为了让您更好地了解该职位，以下是一些简要信息：\n\n- 该职位为 [全职 / 合同制]，合同期限为 [如适用]。\n- 公司类型为 [产品型 / 服务型]。\n- 我们目前的技术栈包括 [相关技术]。\n- 该职位涉及 [职责简述]。\n- 薪资范围：[如适用，请注明范围]。\n\n我希望安排一次简短的通话进一步讨论。请问您本周是否有时间？\n\n期待您的回复！\n\n此致，"
+  },
+  "projects": {
+    "5": {
+      "title": "Quintace",
+      "description": "一个用于练习和玩扑克的平台。"
+    },
+    "1": {
+      "title": "G LNK",
+      "description": "一个借助 AI 招聘医疗服务提供者的平台。"
+    },
+    "2": {
+      "title": "Mynth",
+      "description": "一个在区块链上交换数字资产的平台。"
+    },
+    "3": {
+      "title": "Tootle",
+      "description": "尼泊尔首个打车共享应用。"
+    },
+    "4": {
+      "title": "Husslup（已停止运营）",
+      "description": "一个连接好莱坞幕后顶尖人才的社交媒体平台。"
+    }
+  },
+  "experiences": {
+    "5": {
+      "title": "高级软件工程师",
+      "company": "A5 Labs",
+      "description": [
+        "主导了跨 6+ 包的单一代码库 TypeScript 改造，将生产环境类型错误减少了 98%。",
+        "在 30 分钟内交付了零维护翻译解决方案，开拓了中国市场，节省了数周的跨团队工作。",
+        "构建了兼容 React 和 Vue 的可复用 Lit 组件，消除了 3+ 个代码库中的重复 UI 工作。"
+      ]
+    },
+    "1": {
+      "title": "高级软件工程师",
+      "company": "G LNK (YC W25)",
+      "description": [
+        "与两人团队在一周内构建了 MVP，使公司成功获得 Y Combinator 融资。",
+        "创建了基础的前端和后端架构，为所有后续项目奠定了基础并实现了扩展。",
+        "用微服务替换了单体 OpenAPI SDK，消除了请求瓶颈，性能提升超过 50%。",
+        "开发了基于 Redis 缓存的 AI 驱动搜索和看板，将加载时间从 10 秒降至 0 秒，显著提升了用户体验。"
+      ]
+    },
+    "2": {
+      "title": "高级软件工程师",
+      "company": "Mynth",
+      "description": [
+        "使用 kustomize 在 Kubernetes 中编排云基础设施，展示了现代基础设施管理能力。",
+        "利用 Vault 实施了强大的数据安全措施，展示了保护敏感信息和确保合规性的专业知识。",
+        "在整个 Kubernetes 集群中配置了基于 Datadog 的全面日志解决方案，实现了实时监控和主动故障排查。",
+        "一天内掌握 Python 并创建了 Discord 发帖微服务，同时详细记录了各环境的镜像版本。",
+        "使用 ArgoCD 建立了精简的 CI/CD 流水线，展示了自动化软件交付的专业能力。",
+        "实施了带 Auth0 认证的 Payload CRM，克服了集成挑战以确保无缝功能。",
+        "用 Node.js 创建了镜像更新器，自动更新 Kubernetes 上的镜像，并用 Python 自定义 Cronjob 监控镜像版本。"
+      ]
+    },
+    "3": {
+      "title": "高级软件工程师",
+      "company": "Fusemachines",
+      "description": [
+        "使用 React Native 开发移动端，NestJS 开发后端，2 名开发者在 6 个月内从零构建并交付 MVP。",
+        "快速掌握了 Flutter、React Native 和 NestJS 等框架。",
+        "为 OpenSearch 设计基础设施，将平台搜索时间从约 10 秒减少至几毫秒。",
+        "从 2022 年 7 月至今，在 4000 名用户中实现了 100% 无崩溃，数据来自 Firebase、应用商店及 Google Play 分析。",
+        "主导并与团队共同实施认证和授权基础设施，显著提升了产品安全性，至今未发生安全事故。",
+        "从零开始实现并设计了应用中超过 50% 的功能。"
+      ]
+    },
+    "4": {
+      "title": "软件工程师",
+      "company": "Tootle",
+      "description": [
+        "将应用稳定性从 60% 提升至 90% 以上。",
+        "更新了应用中使用的所有技术，使其更易于维护。",
+        "将 Google 反向地理编码费用降低了 50% 以上。",
+        "为应用引入了合理的架构，使其更易于维护和新功能的实现。",
+        "使用原生 Android 的 Canvas API 创建了高度自定义的 UI。"
+      ]
+    }
+  },
+  "skills": {
+    "categories": {
+      "frontendDevelopment": "前端开发",
+      "backendDevelopment": "后端开发",
+      "databasesAndStorage": "数据库与存储",
+      "cloudAndDevOps": "云计算与 DevOps",
+      "programmingLanguages": "编程语言",
+      "toolsAndMethodologies": "工具与方法论"
+    }
+  }
+}

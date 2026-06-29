@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Головна",
+    "about": "Про мене",
+    "experience": "Досвід",
+    "projects": "Проєкти",
+    "skills": "Навички"
+  },
+  "footer": {
+    "tagline": "Будуємо майбутнє з кодом, рядок за рядком. Давайте створимо щось чудове разом.",
+    "cta": "Давайте працювати разом",
+    "copyright": "© {{year}} {{name}}. Усі права захищені. Створено з ❤️ та великою кількістю ☕"
+  },
+  "hero": {
+    "greeting": "Привіт, я",
+    "tagline": "Я створюю красиві, функціональні та масштабовані веб-застосунки, які справді мають значення.",
+    "viewWork": "Переглянути мої роботи",
+    "aboutMe": "Про мене",
+    "scrollDown": "Прокрутити вниз"
+  },
+  "about": {
+    "heading": "Про мене",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "Резюме",
+    "stats": {
+      "yearsExperience": "Роки досвіду",
+      "projectsCompleted": "Завершені проєкти",
+      "technologies": "Технології",
+      "clientSatisfaction": "Задоволеність клієнтів"
+    }
+  },
+  "experience": {
+    "heading": "Професійний досвід",
+    "subtitle": "Мій шлях як інженера-програміста — створення масштабованих застосунків та керівництво командами розробників.",
+    "keyAccomplishments": "Ключові досягнення",
+    "technologiesTools": "Технології та інструменти",
+    "showMore": "Показати ще {{count}} досягнень",
+    "downloadResume": "Завантажити повне резюме"
+  },
+  "projects": {
+    "heading": "Вибрані проєкти",
+    "subtitle": "Ось деякі з моїх останніх проєктів, що демонструють мої навички у full-stack розробці, сучасних фреймворках та творчому вирішенні проблем.",
+    "ctaQuestion": "Маєте цікавий проєкт?",
+    "cta": "Давайте працювати разом",
+    "code": "Код",
+    "live": "Демо"
+  },
+  "skills": {
+    "heading": "Навички та технології",
+    "subtitle": "Комплексний огляд моєї технічної експертизи та інструментів, які я використовую для втілення ідей у життя.",
+    "additionalExpertise": "Додаткова експертиза",
+    "coreCompetencies": "Ключові компетенції",
+    "competencies": {
+      "frontendDevelopment": "Frontend-розробка",
+      "backendDevelopment": "Backend-розробка",
+      "systemDesign": "Системне проєктування",
+      "problemSolving": "Вирішення проблем"
+    },
+    "additionalSkills": {
+      "agileScrum": "Agile/Scrum",
+      "codeReview": "Перевірка коду",
+      "mentoring": "Менторство",
+      "teamLeadership": "Керівництво командою",
+      "cicd": "CI/CD",
+      "testing": "Тестування",
+      "performanceOptimization": "Оптимізація продуктивності",
+      "securityBestPractices": "Найкращі практики безпеки"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills"
+  },
+  "footer": {
+    "tagline": "Building the future with code, one line at a time. Let's create something amazing together.",
+    "cta": "Let's Work Together",
+    "copyright": "© {{year}} {{name}}. All rights reserved. Built with ❤️ and lots of ☕"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "tagline": "I create beautiful, functional, and scalable web applications that make a difference.",
+    "viewWork": "View My Work",
+    "aboutMe": "About Me",
+    "scrollDown": "Scroll Down"
+  },
+  "about": {
+    "heading": "About Me",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "Resume",
+    "stats": {
+      "yearsExperience": "Years Experience",
+      "projectsCompleted": "Projects Completed",
+      "technologies": "Technologies",
+      "clientSatisfaction": "Client Satisfaction"
+    }
+  },
+  "experience": {
+    "heading": "Professional Experience",
+    "subtitle": "My journey as a software engineer, building scalable applications and leading development teams.",
+    "keyAccomplishments": "Key Accomplishments",
+    "technologiesTools": "Technologies & Tools",
+    "showMore": "Show {{count}} more accomplishments",
+    "downloadResume": "Download Full Resume"
+  },
+  "projects": {
+    "heading": "Featured Projects",
+    "subtitle": "Here are some of my recent projects that showcase my skills in full-stack development, modern frameworks, and creative problem-solving.",
+    "ctaQuestion": "Have an interesting project in mind?",
+    "cta": "Let's Work Together",
+    "code": "Code",
+    "live": "Live"
+  },
+  "skills": {
+    "heading": "Skills & Technologies",
+    "subtitle": "A comprehensive overview of my technical expertise and the tools I use to bring ideas to life.",
+    "additionalExpertise": "Additional Expertise",
+    "coreCompetencies": "Core Competencies",
+    "competencies": {
+      "frontendDevelopment": "Frontend Development",
+      "backendDevelopment": "Backend Development",
+      "systemDesign": "System Design",
+      "problemSolving": "Problem Solving"
+    },
+    "additionalSkills": {
+      "agileScrum": "Agile/Scrum",
+      "codeReview": "Code Review",
+      "mentoring": "Mentoring",
+      "teamLeadership": "Team Leadership",
+      "cicd": "CI/CD",
+      "testing": "Testing",
+      "performanceOptimization": "Performance Optimization",
+      "securityBestPractices": "Security Best Practices"
+    }
+  }
+}

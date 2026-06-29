@@ -3,9 +3,15 @@ import { aboutMe } from '@/data/portfolio';
 import { motion } from 'motion/react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation(['ui', 'portfolio']);
   const currentYear = new Date().getFullYear();
+
+  const subject = t('portfolio:emailTemplate.subject');
+  const body = t('portfolio:emailTemplate.body');
+  const emailLink = `mailto:${aboutMe.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
   return (
     <footer className='bg-gray-900 text-white py-12 px-4 xs:px-6 sm:px-8'>
@@ -43,8 +49,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className='text-gray-400 max-w-md mx-auto mb-8 text-sm xs:text-base'
           >
-            Building the future with code, one line at a time. Let&apos;s create
-            something amazing together.
+            {t('footer.tagline')}
           </motion.p>
 
           {/* Social Links */}
@@ -58,7 +63,7 @@ const Footer = () => {
             {[
               { url: aboutMe.github, icon: <FaGithub size={20} />, label: 'GitHub' },
               { url: aboutMe.linkedin, icon: <FaLinkedin size={20} />, label: 'LinkedIn' },
-              { url: aboutMe.getEmailLink(), icon: <SiGmail size={20} />, label: 'Email' },
+              { url: emailLink, icon: <SiGmail size={20} />, label: 'Email' },
             ].map((social, index) => (
               <motion.a
                 key={social.label}
@@ -88,13 +93,13 @@ const Footer = () => {
             className='mb-8'
           >
             <motion.a
-              href={aboutMe.getEmailLink()}
+              href={emailLink}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className='inline-block bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl'
             >
               <span className='mr-2'>💬</span>
-              Let&apos;s Work Together
+              {t('footer.cta')}
             </motion.a>
           </motion.div>
 
@@ -115,8 +120,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className='text-gray-500 text-xs xs:text-sm'
           >
-            © {currentYear} {aboutMe.name}. All rights reserved. Built with ❤️
-            and lots of ☕
+            {t('footer.copyright', { year: currentYear, name: aboutMe.name })}
           </motion.p>
         </motion.div>
       </div>
