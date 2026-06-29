@@ -2,6 +2,7 @@
 import type { Project } from '@/data/portfolio';
 import { aboutMe, projects } from '@/data/portfolio';
 import { motion } from 'motion/react';
+import { FaGithub } from 'react-icons/fa';
 
 const ProjectCard = ({
   project,
@@ -91,7 +92,7 @@ const ProjectCard = ({
               whileTap={{ scale: 0.95 }}
               className='flex-1 bg-gray-800 text-white py-2.5 xs:py-2 px-4 rounded-lg text-center font-medium hover:bg-gray-700 transition-colors duration-300 text-sm'
             >
-              <span className='mr-2'>🐙</span>Code
+              <FaGithub size={16} className="mr-2 inline-block" />Code
             </motion.a>
           )}
           {project.liveUrl && (
