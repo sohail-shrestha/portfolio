@@ -3,6 +3,7 @@ import type { Project } from '@/data/portfolio';
 import { aboutMe, projects } from '@/data/portfolio';
 import { motion } from 'motion/react';
 import { FaGithub } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const ProjectCard = ({
   project,
@@ -11,6 +12,16 @@ const ProjectCard = ({
   project: Project;
   index: number;
 }) => {
+  const { t } = useTranslation(['ui', 'portfolio']);
+  const td = t as unknown as (key: string, opts?: Record<string, unknown>) => unknown;
+
+  const title = td(`portfolio:projects.${project.id}.title`, {
+    defaultValue: project.title,
+  }) as string;
+  const description = td(`portfolio:projects.${project.id}.description`, {
+    defaultValue: project.description,
+  }) as string;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -38,7 +49,7 @@ const ProjectCard = ({
           viewport={{ once: true }}
           className='text-lg xs:text-xl sm:text-2xl font-bold text-gray-800 mb-2 xs:mb-3 group-hover:text-violet-600 transition-colors duration-300'
         >
-          {project.title}
+          {title}
         </motion.h3>
 
         <motion.p
@@ -48,7 +59,7 @@ const ProjectCard = ({
           viewport={{ once: true }}
           className='text-gray-600 mb-3 xs:mb-4 text-sm leading-relaxed'
         >
-          {project.description}
+          {description}
         </motion.p>
 
         <motion.div
@@ -92,7 +103,7 @@ const ProjectCard = ({
               whileTap={{ scale: 0.95 }}
               className='flex-1 bg-gray-800 text-white py-2.5 xs:py-2 px-4 rounded-lg text-center font-medium hover:bg-gray-700 transition-colors duration-300 text-sm'
             >
-              <FaGithub size={16} className="mr-2 inline-block" />Code
+              <FaGithub size={16} className="mr-2 inline-block" />{t('projects.code')}
             </motion.a>
           )}
           {project.liveUrl && (
@@ -104,7 +115,7 @@ const ProjectCard = ({
               whileTap={{ scale: 0.95 }}
               className='flex-1 bg-violet-600 text-white py-2.5 xs:py-2 px-4 rounded-lg text-center font-medium hover:bg-violet-700 transition-colors duration-300 text-sm'
             >
-              <span className='mr-2'>🚀</span>Live
+              <span className='mr-2'>🚀</span>{t('projects.live')}
             </motion.a>
           )}
         </motion.div>
@@ -114,6 +125,12 @@ const ProjectCard = ({
 };
 
 const Projects = () => {
+  const { t } = useTranslation(['ui', 'portfolio']);
+
+  const subject = t('portfolio:emailTemplate.subject');
+  const body = t('portfolio:emailTemplate.body');
+  const emailLink = `mailto:${aboutMe.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
   return (
     <section
       id='projects'
@@ -128,7 +145,7 @@ const Projects = () => {
           className='text-center mb-12 xs:mb-16'
         >
           <h2 className='text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-gradient mb-4 xs:mb-6'>
-            Featured Projects
+            {t('projects.heading')}
           </h2>
           <div className='w-20 xs:w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 mx-auto mb-4 xs:mb-6'></div>
           <motion.p
@@ -138,9 +155,7 @@ const Projects = () => {
             viewport={{ once: true }}
             className='text-gray-600 max-w-2xl mx-auto text-sm xs:text-base sm:text-lg px-4'
           >
-            Here are some of my recent projects that showcase my skills in
-            full-stack development, modern frameworks, and creative
-            problem-solving.
+            {t('projects.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -165,7 +180,7 @@ const Projects = () => {
             viewport={{ once: true }}
             className='text-gray-600 mb-4 xs:mb-6 text-base xs:text-lg px-4'
           >
-            Have an interesting project in mind?
+            {t('projects.ctaQuestion')}
           </motion.p>
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -173,11 +188,11 @@ const Projects = () => {
             className='inline-block px-4'
           >
             <a
-              href={aboutMe.getEmailLink()}
+              href={emailLink}
               className='block bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-6 xs:px-8 py-3 xs:py-4 rounded-lg font-semibold text-base xs:text-lg hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl text-center'
             >
               <span className='mr-2'>💬</span>
-              Let&apos;s Work Together
+              {t('projects.cta')}
             </a>
           </motion.div>
         </motion.div>

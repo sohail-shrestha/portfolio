@@ -1,0 +1,99 @@
+{
+  "about": {
+    "title": "Senior Software Engineer",
+    "description": "Ich bin ein leidenschaftlicher Senior Software Engineer mit über 8 Jahren Erfahrung in der Entwicklung skalierbarer Webanwendungen und der Leitung von Entwicklungsteams. Ich bin spezialisiert auf Full-Stack-Entwicklung mit Expertise in modernen JavaScript-Frameworks, Cloud-Architektur und Microservices. Ich habe eine nachgewiesene Erfolgsbilanz bei der Lieferung hochwertiger Softwarelösungen für Millionen von Nutzern, während ich Teams mentore und technische Exzellenz vorantreibe."
+  },
+  "emailTemplate": {
+    "subject": "Zusammenarbeit – Anfrage für Fullstack-Möglichkeit",
+    "body": "Hallo Sohail,\n\nIch bin auf Ihr Portfolio gestoßen und war von Ihrer Arbeit beeindruckt! Ich würde gerne eine mögliche Zusammenarbeit oder Möglichkeit mit Ihnen erkunden.\n\nHier sind einige kurze Details zur Rolle:\n\n- Die Position ist [Vollzeit / Vertrag], und die Vertragsdauer beträgt [falls zutreffend].\n- Das Unternehmen ist [Produkt-basiert / Service-basiert].\n- Unser aktueller Tech-Stack umfasst [relevante Technologien nennen].\n- Die Rolle beinhaltet [kurze Beschreibung der Verantwortlichkeiten].\n- Gehaltsbereich: [Bereich angeben, falls zutreffend].\n\nIch würde gerne einen kurzen Anruf vereinbaren, um dies näher zu besprechen. Haben Sie diese Woche Zeit für ein Gespräch?\n\nIch freue mich auf Ihre Rückmeldung!\n\nMit freundlichen Grüßen,"
+  },
+  "projects": {
+    "5": {
+      "title": "Quintace",
+      "description": "Eine Plattform zum Üben und Spielen von Poker."
+    },
+    "1": {
+      "title": "G LNK",
+      "description": "Eine Plattform für die Vermittlung von Gesundheitsdienstleistern mit Hilfe von KI."
+    },
+    "2": {
+      "title": "Mynth",
+      "description": "Eine Plattform zum Austausch digitaler Assets auf der Blockchain."
+    },
+    "3": {
+      "title": "Tootle",
+      "description": "Nepals erste Ridesharing-App."
+    },
+    "4": {
+      "title": "Husslup (Nicht mehr aktiv)",
+      "description": "Eine Social-Media-Plattform zur Vernetzung von Hollywoods Top-Talenten hinter der Kamera."
+    }
+  },
+  "experiences": {
+    "5": {
+      "title": "Senior Software Engineer",
+      "company": "A5 Labs",
+      "description": [
+        "Führte eine monorepo-weite TypeScript-Initiative über 6+ Pakete durch und reduzierte produktionsbezogene Typfehler um 98 %.",
+        "Lieferte in 30 Minuten eine wartungsfreie Übersetzungslösung, erschloss den chinesischen Markt und sparte wochenlange teamübergreifende Arbeit.",
+        "Entwickelte wiederverwendbare Lit-Komponenten, kompatibel mit React und Vue, und eliminierte doppelte UI-Arbeit in 3+ Codebasen."
+      ]
+    },
+    "1": {
+      "title": "Senior Software Engineer",
+      "company": "G LNK (YC W25)",
+      "description": [
+        "Entwickelte mit einem zweiköpfigen Team in einer Woche ein MVP, das dem Unternehmen ermöglichte, Y Combinator-Finanzierung zu sichern.",
+        "Schuf grundlegende Frontend- und Backend-Architektur, die alle zukünftigen Projekte skalierte.",
+        "Ersetzte monolithisches OpenAPI SDK durch Microservices, eliminierte Anfrage-Engpässe und verbesserte die Leistung um über 50 %.",
+        "Entwickelte KI-gestützte Suche und Kanban-Board mit Redis-Caching zur Latenzbehandlung, reduzierte Ladezeiten von 10s auf 0s und verbesserte die UX erheblich."
+      ]
+    },
+    "2": {
+      "title": "Senior Software Engineer",
+      "company": "Mynth",
+      "description": [
+        "Orchestrierte Cloud-Infrastruktur in Kubernetes mit kustomize und demonstrierte Kompetenz in modernen Infrastrukturmanagement-Techniken.",
+        "Implementierte robuste Datensicherheitsmaßnahmen mit Vault und zeigte Expertise beim Schutz sensibler Informationen und der Einhaltung von Branchenstandards.",
+        "Konfigurierte umfassende Logging-Lösungen mit Datadog über den gesamten Kubernetes-Cluster, ermöglichte Echtzeitüberwachung und proaktive Fehlerbehebung.",
+        "Meisterte Python innerhalb eines Tages, um einen Discord-Posting-Microservice zu erstellen, und dokumentierte Bildversionen für verschiedene Umgebungen.",
+        "Etablierte eine optimierte CI/CD-Pipeline mit ArgoCD und demonstrierte Expertise in der Automatisierung der Softwarebereitstellung.",
+        "Implementierte Payload CRM mit Auth0-Authentifizierung und überwand Integrationsprobleme für nahtlose Funktionalität.",
+        "Erstellte einen Image-Updater mit Node.js, der Images auf Kubernetes automatisch aktualisiert und Bildversionen mit einem benutzerdefinierten Cronjob in Python überwacht."
+      ]
+    },
+    "3": {
+      "title": "Senior Software Engineer",
+      "company": "Fusemachines",
+      "description": [
+        "Verwendete React Native für Mobile und NestJS für Backend und brachte das MVP in 6 Monaten mit nur 2 Entwicklern zum Laufen.",
+        "Schnelle Einarbeitung in Frameworks wie Flutter, React Native und NestJS.",
+        "Infrastruktur für OpenSearch architekturiert, was die Suchzeit auf der Plattform von ca. 10 Sekunden auf wenige Millisekunden reduzierte.",
+        "100 % absturzfreie Nutzer mit 4.000 Usern von Juli 2022 bis heute, laut Firebase Analytics, Playstore Analytics und App Store Analytics.",
+        "Authentifizierungs- und Autorisierungsinfrastruktur architekturiert und mit dem Team implementiert, um das Produkt sicherer zu machen.",
+        "Über 50 % aller App-Features von Grund auf implementiert und architekturiert."
+      ]
+    },
+    "4": {
+      "title": "Software Engineer",
+      "company": "Tootle",
+      "description": [
+        "App-Stabilität von 60 % auf über 90 % gesteigert.",
+        "Alle in der App verwendeten Technologien aktualisiert, um die Wartung zu vereinfachen.",
+        "Google Reverse Geocoding-Kosten um mehr als 50 % reduziert.",
+        "Richtige Architektur in der App eingeführt, um Wartung und Implementierung neuer Features zu erleichtern.",
+        "Hochgradig angepasste UI mithilfe der Canvas API auf nativem Android erstellt."
+      ]
+    }
+  },
+  "skills": {
+    "categories": {
+      "frontendDevelopment": "Frontend-Entwicklung",
+      "backendDevelopment": "Backend-Entwicklung",
+      "databasesAndStorage": "Datenbanken & Speicher",
+      "cloudAndDevOps": "Cloud & DevOps",
+      "programmingLanguages": "Programmiersprachen",
+      "toolsAndMethodologies": "Tools & Methoden"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "skills": "Habilidades"
+  },
+  "footer": {
+    "tagline": "Construyendo el futuro con código, una línea a la vez. Creemos algo increíble juntos.",
+    "cta": "Trabajemos juntos",
+    "copyright": "© {{year}} {{name}}. Todos los derechos reservados. Construido con ❤️ y mucho ☕"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "tagline": "Creo aplicaciones web hermosas, funcionales y escalables que marcan la diferencia.",
+    "viewWork": "Ver mi trabajo",
+    "aboutMe": "Sobre mí",
+    "scrollDown": "Desplazar hacia abajo"
+  },
+  "about": {
+    "heading": "Sobre mí",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "Currículum",
+    "stats": {
+      "yearsExperience": "Años de experiencia",
+      "projectsCompleted": "Proyectos completados",
+      "technologies": "Tecnologías",
+      "clientSatisfaction": "Satisfacción del cliente"
+    }
+  },
+  "experience": {
+    "heading": "Experiencia profesional",
+    "subtitle": "Mi trayectoria como ingeniero de software, construyendo aplicaciones escalables y liderando equipos de desarrollo.",
+    "keyAccomplishments": "Logros principales",
+    "technologiesTools": "Tecnologías y herramientas",
+    "showMore": "Mostrar {{count}} logros más",
+    "downloadResume": "Descargar currículum completo"
+  },
+  "projects": {
+    "heading": "Proyectos destacados",
+    "subtitle": "Aquí hay algunos de mis proyectos recientes que muestran mis habilidades en desarrollo full-stack, frameworks modernos y resolución creativa de problemas.",
+    "ctaQuestion": "¿Tienes un proyecto interesante en mente?",
+    "cta": "Trabajemos juntos",
+    "code": "Código",
+    "live": "En vivo"
+  },
+  "skills": {
+    "heading": "Habilidades y tecnologías",
+    "subtitle": "Una descripción completa de mi experiencia técnica y las herramientas que uso para dar vida a las ideas.",
+    "additionalExpertise": "Experiencia adicional",
+    "coreCompetencies": "Competencias principales",
+    "competencies": {
+      "frontendDevelopment": "Desarrollo frontend",
+      "backendDevelopment": "Desarrollo backend",
+      "systemDesign": "Diseño de sistemas",
+      "problemSolving": "Resolución de problemas"
+    },
+    "additionalSkills": {
+      "agileScrum": "Ágil/Scrum",
+      "codeReview": "Revisión de código",
+      "mentoring": "Mentoría",
+      "teamLeadership": "Liderazgo de equipo",
+      "cicd": "CI/CD",
+      "testing": "Pruebas",
+      "performanceOptimization": "Optimización de rendimiento",
+      "securityBestPractices": "Mejores prácticas de seguridad"
+    }
+  }
+}

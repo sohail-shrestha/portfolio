@@ -2,8 +2,11 @@
 import { aboutMe } from '@/data/portfolio';
 import { motion } from 'motion/react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation(['ui', 'portfolio']);
+
   return (
     <section
       id='about'
@@ -18,7 +21,7 @@ const About = () => {
           className='text-center mb-16'
         >
           <h2 className='text-4xl xs:text-5xl sm:text-6xl font-bold text-gradient mb-6'>
-            About Me
+            {t('about.heading')}
           </h2>
           <div className='w-24 h-1 bg-gradient-to-r from-violet-500 to-indigo-500 mx-auto'></div>
         </motion.div>
@@ -84,7 +87,7 @@ const About = () => {
                 viewport={{ once: true }}
                 className='text-lg xs:text-xl text-violet-600 font-semibold mb-4'
               >
-                {aboutMe.title}
+                {t('portfolio:about.title')}
               </motion.p>
             </div>
 
@@ -95,7 +98,7 @@ const About = () => {
               viewport={{ once: true }}
               className='text-gray-600 leading-relaxed text-base xs:text-lg'
             >
-              {aboutMe.description}
+              {t('portfolio:about.description')}
             </motion.p>
 
             <motion.div
@@ -113,7 +116,7 @@ const About = () => {
                 whileTap={{ scale: 0.95 }}
                 className='bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors duration-300 flex items-center gap-2'
               >
-                <FaGithub size={20} /> GitHub
+                <FaGithub size={20} /> {t('about.github')}
               </motion.a>
               <motion.a
                 href={aboutMe.linkedin}
@@ -123,7 +126,7 @@ const About = () => {
                 whileTap={{ scale: 0.95 }}
                 className='bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 flex items-center gap-2'
               >
-                <FaLinkedin size={20} /> LinkedIn
+                <FaLinkedin size={20} /> {t('about.linkedin')}
               </motion.a>
               <motion.a
                 href={aboutMe.resume}
@@ -133,7 +136,7 @@ const About = () => {
                 whileTap={{ scale: 0.95 }}
                 className='bg-violet-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-violet-700 transition-colors duration-300 flex items-center gap-2'
               >
-                <span>📄</span> Resume
+                <span>📄</span> {t('about.resume')}
               </motion.a>
             </motion.div>
           </motion.div>
@@ -148,10 +151,10 @@ const About = () => {
           className='mt-16 grid grid-cols-2 md:grid-cols-4 gap-6'
         >
           {[
-            { number: '5+', label: 'Years Experience' },
-            { number: '3+', label: 'Projects Completed' },
-            { number: '10+', label: 'Technologies' },
-            { number: '100%', label: 'Client Satisfaction' },
+            { number: '5+', label: t('about.stats.yearsExperience') },
+            { number: '3+', label: t('about.stats.projectsCompleted') },
+            { number: '10+', label: t('about.stats.technologies') },
+            { number: '100%', label: t('about.stats.clientSatisfaction') },
           ].map((stat, index) => (
             <motion.div
               key={index}

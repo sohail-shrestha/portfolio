@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "experience": "Erfahrung",
+    "projects": "Projekte",
+    "skills": "Fähigkeiten"
+  },
+  "footer": {
+    "tagline": "Die Zukunft mit Code gestalten, eine Zeile nach der anderen. Lass uns gemeinsam etwas Großartiges schaffen.",
+    "cta": "Lass uns zusammenarbeiten",
+    "copyright": "© {{year}} {{name}}. Alle Rechte vorbehalten. Erstellt mit ❤️ und viel ☕"
+  },
+  "hero": {
+    "greeting": "Hallo, ich bin",
+    "tagline": "Ich entwickle schöne, funktionale und skalierbare Webanwendungen, die einen Unterschied machen.",
+    "viewWork": "Meine Arbeit ansehen",
+    "aboutMe": "Über mich",
+    "scrollDown": "Nach unten scrollen"
+  },
+  "about": {
+    "heading": "Über mich",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "Lebenslauf",
+    "stats": {
+      "yearsExperience": "Jahre Erfahrung",
+      "projectsCompleted": "Abgeschlossene Projekte",
+      "technologies": "Technologien",
+      "clientSatisfaction": "Kundenzufriedenheit"
+    }
+  },
+  "experience": {
+    "heading": "Berufserfahrung",
+    "subtitle": "Mein Weg als Softwareingenieur – skalierbare Anwendungen entwickeln und Entwicklungsteams leiten.",
+    "keyAccomplishments": "Wichtige Erfolge",
+    "technologiesTools": "Technologien & Tools",
+    "showMore": "{{count}} weitere Erfolge anzeigen",
+    "downloadResume": "Vollständigen Lebenslauf herunterladen"
+  },
+  "projects": {
+    "heading": "Ausgewählte Projekte",
+    "subtitle": "Hier sind einige meiner neuesten Projekte, die meine Fähigkeiten in der Full-Stack-Entwicklung, modernen Frameworks und kreativer Problemlösung zeigen.",
+    "ctaQuestion": "Haben Sie ein interessantes Projekt im Sinn?",
+    "cta": "Lass uns zusammenarbeiten",
+    "code": "Code",
+    "live": "Live"
+  },
+  "skills": {
+    "heading": "Fähigkeiten & Technologien",
+    "subtitle": "Ein umfassender Überblick über mein technisches Fachwissen und die Tools, die ich nutze, um Ideen zum Leben zu erwecken.",
+    "additionalExpertise": "Zusätzliche Expertise",
+    "coreCompetencies": "Kernkompetenzen",
+    "competencies": {
+      "frontendDevelopment": "Frontend-Entwicklung",
+      "backendDevelopment": "Backend-Entwicklung",
+      "systemDesign": "Systemdesign",
+      "problemSolving": "Problemlösung"
+    },
+    "additionalSkills": {
+      "agileScrum": "Agile/Scrum",
+      "codeReview": "Code-Review",
+      "mentoring": "Mentoring",
+      "teamLeadership": "Teamführung",
+      "cicd": "CI/CD",
+      "testing": "Testing",
+      "performanceOptimization": "Performance-Optimierung",
+      "securityBestPractices": "Sicherheits-Best-Practices"
+    }
+  }
+}

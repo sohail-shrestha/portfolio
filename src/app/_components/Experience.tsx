@@ -3,6 +3,7 @@ import type { Experience as ExperienceType } from '@/data/portfolio';
 import { experiences } from '@/data/portfolio';
 import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ExperienceModalProps {
   experience: ExperienceType;
@@ -15,7 +16,21 @@ const ExperienceModal = ({
   isOpen,
   onClose,
 }: ExperienceModalProps) => {
+  const { t } = useTranslation(['ui', 'portfolio']);
+  const td = t as unknown as (key: string, opts?: Record<string, unknown>) => unknown;
+
   if (!isOpen) return null;
+
+  const descriptions = td(
+    `portfolio:experiences.${experience.id}.description`,
+    { returnObjects: true }
+  ) as string[];
+  const title = td(`portfolio:experiences.${experience.id}.title`, {
+    defaultValue: experience.title,
+  }) as string;
+  const company = td(`portfolio:experiences.${experience.id}.company`, {
+    defaultValue: experience.company,
+  }) as string;
 
   return (
     <AnimatePresence>
@@ -39,10 +54,10 @@ const ExperienceModal = ({
             <div className='flex justify-between items-start'>
               <div>
                 <h3 className='text-2xl font-bold text-violet-600 mb-1'>
-                  {experience.title}
+                  {title}
                 </h3>
                 <p className='text-gray-600 font-medium'>
-                  {experience.company} • {experience.location}
+                  {company} • {experience.location}
                 </p>
                 <span className='inline-block bg-violet-100 text-violet-700 px-3 py-1 rounded-full text-sm font-medium mt-2'>
                   {experience.startDate} - {experience.endDate}
@@ -62,10 +77,10 @@ const ExperienceModal = ({
             {/* All Accomplishments */}
             <div className='mb-6'>
               <h4 className='text-lg font-semibold text-gray-800 mb-4'>
-                Key Accomplishments
+                {t('experience.keyAccomplishments')}
               </h4>
               <div className='space-y-3'>
-                {experience.description.map((desc, index) => (
+                {descriptions.map((desc, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -83,7 +98,7 @@ const ExperienceModal = ({
             {/* Technologies Used */}
             <div>
               <h4 className='text-lg font-semibold text-gray-800 mb-4'>
-                Technologies & Tools
+                {t('experience.technologiesTools')}
               </h4>
               <div className='flex flex-wrap gap-2'>
                 {experience.technologies.map((tech, index) => (
@@ -113,12 +128,27 @@ const ExperienceCard = ({
   experience: ExperienceType;
   index: number;
 }) => {
+  const { t } = useTranslation(['ui', 'portfolio']);
+  const td = t as unknown as (key: string, opts?: Record<string, unknown>) => unknown;
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const title = td(`portfolio:experiences.${experience.id}.title`, {
+    defaultValue: experience.title,
+  }) as string;
+  const company = td(`portfolio:experiences.${experience.id}.company`, {
+    defaultValue: experience.company,
+  }) as string;
+  const descriptions = td(
+    `portfolio:experiences.${experience.id}.description`,
+    { returnObjects: true }
+  ) as string[];
+
   const showMoreThreshold = 4;
-  const shouldShowMore = experience.description.length > showMoreThreshold;
+  const shouldShowMore = descriptions.length > showMoreThreshold;
   const displayedDescriptions = shouldShowMore
-    ? experience.description.slice(0, showMoreThreshold)
-    : experience.description;
+    ? descriptions.slice(0, showMoreThreshold)
+    : descriptions;
+
   return (
     <motion.div
       initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -163,10 +193,10 @@ const ExperienceCard = ({
           >
             <div>
               <h3 className='text-xl xs:text-2xl font-bold text-violet-600 mb-1'>
-                {experience.title}
+                {title}
               </h3>
               <p className='text-gray-600 font-medium text-sm xs:text-base'>
-                {experience.company} • {experience.location}
+                {company} • {experience.location}
               </p>
             </div>
             <motion.span
@@ -218,8 +248,9 @@ const ExperienceCard = ({
                 className='text-violet-600 hover:text-violet-700 font-medium text-sm flex items-center gap-1 mt-2 transition-colors duration-200'
               >
                 <span>
-                  Show {experience.description.length - showMoreThreshold} more
-                  accomplishments
+                  {t('experience.showMore', {
+                    count: descriptions.length - showMoreThreshold,
+                  })}
                 </span>
                 <span className='text-xs'>→</span>
               </motion.button>
@@ -264,6 +295,8 @@ const ExperienceCard = ({
 };
 
 const Experience = () => {
+  const { t } = useTranslation('ui');
+
   return (
     <section
       id='experience'
@@ -278,7 +311,7 @@ const Experience = () => {
           className='text-center mb-16'
         >
           <h2 className='text-4xl xs:text-5xl sm:text-6xl font-bold text-gradient mb-6'>
-            Professional Experience
+            {t('experience.heading')}
           </h2>
           <div className='w-24 h-1 bg-gradient-to-r from-violet-500 to-indigo-500 mx-auto mb-6'></div>
           <motion.p
@@ -288,8 +321,7 @@ const Experience = () => {
             viewport={{ once: true }}
             className='text-gray-600 max-w-2xl mx-auto text-base xs:text-lg'
           >
-            My journey as a software engineer, building scalable applications
-            and leading development teams.
+            {t('experience.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -323,7 +355,7 @@ const Experience = () => {
               className='bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl'
             >
               <span className='mr-2'>📄</span>
-              Download Full Resume
+              {t('experience.downloadResume')}
             </a>
           </motion.div>
         </motion.div>

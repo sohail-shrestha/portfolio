@@ -3,8 +3,15 @@ import { aboutMe } from '@/data/portfolio';
 import { motion } from 'motion/react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation(['ui', 'portfolio']);
+
+  const subject = t('portfolio:emailTemplate.subject');
+  const body = t('portfolio:emailTemplate.body');
+  const emailLink = `mailto:${aboutMe.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -95,7 +102,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Hi, I&apos;m{' '}
+            {t('hero.greeting')}{' '}
             <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -112,7 +119,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className='text-xl xs:text-2xl sm:text-3xl md:text-4xl font-semibold text-violet-100 mb-6'
           >
-            {aboutMe.title}
+            {t('portfolio:about.title')}
           </motion.h2>
 
           <motion.p
@@ -121,8 +128,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.9 }}
             className='text-base xs:text-lg sm:text-xl text-violet-100 max-w-2xl mx-auto leading-relaxed mb-8'
           >
-            I create beautiful, functional, and scalable web applications that
-            make a difference.
+            {t('hero.tagline')}
           </motion.p>
         </motion.div>
 
@@ -139,7 +145,7 @@ const Hero = () => {
             className='bg-white text-violet-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-violet-50 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2'
           >
             <span>🚀</span>
-            View My Work
+            {t('hero.viewWork')}
           </motion.button>
 
           <motion.button
@@ -149,7 +155,7 @@ const Hero = () => {
             className='border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-violet-600 transition-all duration-300 flex items-center gap-2'
           >
             <span>👨‍💻</span>
-            About Me
+            {t('hero.aboutMe')}
           </motion.button>
         </motion.div>
 
@@ -163,7 +169,7 @@ const Hero = () => {
           {[
             { url: aboutMe.github, icon: <FaGithub size={20} />, label: 'GitHub' },
             { url: aboutMe.linkedin, icon: <FaLinkedin size={20} />, label: 'LinkedIn' },
-            { url: aboutMe.getEmailLink(), icon: <SiGmail size={20} />, label: 'Email' },
+            { url: emailLink, icon: <SiGmail size={20} />, label: 'Email' },
           ].map((social, index) => (
             <motion.a
               key={social.label}
@@ -197,7 +203,7 @@ const Hero = () => {
             className='text-white/70 hover:text-white transition-colors duration-300'
           >
             <div className='flex flex-col items-center gap-2'>
-              <span className='text-sm'>Scroll Down</span>
+              <span className='text-sm'>{t('hero.scrollDown')}</span>
               <motion.div
                 animate={{ y: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}

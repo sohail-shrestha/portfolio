@@ -1,5 +1,6 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import I18nProvider from '@/i18n/I18nProvider';
 import './globals.css';
 
 const geistSans = Geist({
@@ -31,7 +32,11 @@ export const metadata: Metadata = {
   },
   keywords: ['Sohail Shrestha', 'Software Engineer', 'Full Stack Developer', 'React', 'Node.js', 'TypeScript'],
   authors: [{ name: 'Sohail Shrestha' }],
-  viewport: 'width=device-width, initial-scale=1',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -41,11 +46,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var l=localStorage.getItem('portfolio-locale');if(['en','ne','ja','es','de','zh','uk','fr','ru'].indexOf(l)>-1)document.documentElement.lang=l;}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <I18nProvider>{children}</I18nProvider>
       </body>
     </html>
   );
