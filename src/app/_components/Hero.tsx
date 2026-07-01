@@ -8,154 +8,90 @@ import { useTranslation } from 'react-i18next';
 const Hero = () => {
   const { t } = useTranslation(['ui', 'portfolio']);
 
-  const subject = t('portfolio:emailTemplate.subject');
-  const body = t('portfolio:emailTemplate.body');
-  const emailLink = `mailto:${aboutMe.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const emailLink = aboutMe.getEmailLink();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section
       id='home'
-      className='min-h-screen bg-gradient-to-br from-violet-400 via-violet-500 to-indigo-600 flex items-center justify-center relative overflow-hidden'
+      className='relative min-h-screen bg-[#0c1322] flex items-center justify-center pt-24 overflow-hidden px-5 md:px-20'
     >
-      {/* Animated Background Elements */}
-      <div className='absolute inset-0'>
+      {/* Subtle background glow */}
+      <div className='absolute inset-0 pointer-events-none'>
         <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className='absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl'
+          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          className='absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#6d3bd7] blur-[120px]'
         />
         <motion.div
-          animate={{
-            x: [0, -50, 0],
-            y: [0, 100, 0],
-            rotate: [0, -180, -360],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className='absolute top-1/3 right-20 w-32 h-32 bg-white/5 rounded-full blur-xl'
-        />
-        <motion.div
-          animate={{
-            x: [0, 80, 0],
-            y: [0, -80, 0],
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className='absolute bottom-20 left-1/4 w-16 h-16 bg-white/8 rounded-full blur-xl'
+          animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+          className='absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-[#3131c0] blur-[120px]'
         />
       </div>
 
-      <div className='container mx-auto px-4 xs:px-6 sm:px-8 text-center text-white relative z-10'>
+      <div className='relative z-10 text-center max-w-4xl mx-auto'>
+        {/* Available for hire badge */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className='mb-8'
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className='mb-6'
         >
-          <motion.div
-            animate={{
-              y: [0, -10, 0],
-              rotate: [0, 5, -5, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className='text-6xl xs:text-7xl sm:text-8xl md:text-9xl mb-4'
-          >
-            👋
-          </motion.div>
+          <span className='inline-block px-4 py-1 rounded-full bg-[#d0bcff]/10 border border-[#d0bcff]/20 text-[#d0bcff] text-xs font-bold uppercase tracking-widest font-mono'>
+            Available for hire
+          </span>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
+        {/* Main heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className='space-y-4'
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className='text-4xl xs:text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6'
         >
-          <motion.h1
-            className='text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4'
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            {t('hero.greeting')}{' '}
-            <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className='bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent'
-            >
-              {aboutMe.name.split(' ')[0]}
-            </motion.span>
-          </motion.h1>
+          {t('hero.greeting')}{' '}
+          <span className='text-gradient'>{aboutMe.name}</span>
+          <br />
+          <span className='text-[#dce2f7]'>{t('portfolio:about.title')}</span>
+        </motion.h1>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className='text-xl xs:text-2xl sm:text-3xl md:text-4xl font-semibold text-violet-100 mb-6'
-          >
-            {t('portfolio:about.title')}
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className='text-base xs:text-lg sm:text-xl text-violet-100 max-w-2xl mx-auto leading-relaxed mb-8'
-          >
-            {t('hero.tagline')}
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className='flex flex-col xs:flex-row gap-4 justify-center items-center'
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className='text-lg text-[#9CA3AF] max-w-2xl mx-auto mb-10 leading-relaxed'
+        >
+          {t('hero.tagline')}
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className='flex flex-col xs:flex-row items-center justify-center gap-4'
         >
           <motion.button
             onClick={() => scrollToSection('projects')}
-            whileHover={{ scale: 1.05, y: -2 }}
+            whileHover={{ y: -2, boxShadow: '0 10px 20px -10px rgba(109,59,215,0.5)' }}
             whileTap={{ scale: 0.95 }}
-            className='bg-white text-violet-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-violet-50 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2'
+            className='btn-primary w-full xs:w-auto px-10 py-4 rounded-xl font-semibold text-base flex items-center justify-center gap-2'
           >
-            <span>🚀</span>
-            {t('hero.viewWork')}
+            🚀 {t('hero.viewWork')}
           </motion.button>
-
           <motion.button
             onClick={() => scrollToSection('about')}
-            whileHover={{ scale: 1.05, y: -2 }}
+            whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className='border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-violet-600 transition-all duration-300 flex items-center gap-2'
+            className='w-full xs:w-auto px-10 py-4 rounded-xl border border-[#494454] text-[#dce2f7] font-semibold text-base hover:bg-[#191f2f] transition-all flex items-center justify-center gap-2'
           >
-            <span>👨‍💻</span>
-            {t('hero.aboutMe')}
+            👨‍💻 {t('hero.aboutMe')}
           </motion.button>
         </motion.div>
 
@@ -163,8 +99,8 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.3 }}
-          className='flex justify-center gap-6 mt-12'
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className='flex justify-center gap-5 mt-12'
         >
           {[
             { url: aboutMe.github, icon: <FaGithub size={20} />, label: 'GitHub' },
@@ -178,10 +114,10 @@ const Hero = () => {
               rel='noopener noreferrer'
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.4 + index * 0.1 }}
-              whileHover={{ scale: 1.2, y: -5 }}
+              transition={{ duration: 0.5, delay: 1.0 + index * 0.1 }}
+              whileHover={{ scale: 1.15, y: -4 }}
               whileTap={{ scale: 0.9 }}
-              className='w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-2xl hover:bg-white/30 transition-all duration-300'
+              className='w-11 h-11 glass-panel rounded-full flex items-center justify-center text-[#9CA3AF] hover:text-[#d0bcff] transition-colors duration-300'
               title={social.label}
             >
               {social.icon}
@@ -189,28 +125,22 @@ const Hero = () => {
           ))}
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-          className='absolute bottom-8 left-1/2 transform -translate-x-1/2'
+          transition={{ duration: 0.8, delay: 1.3 }}
+          className='absolute bottom-8 left-1/2 -translate-x-1/2'
         >
           <motion.button
             onClick={() => scrollToSection('about')}
-            animate={{ y: [0, 10, 0] }}
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className='text-white/70 hover:text-white transition-colors duration-300'
+            className='text-[#9CA3AF] hover:text-[#d0bcff] transition-colors duration-300'
           >
-            <div className='flex flex-col items-center gap-2'>
-              <span className='text-sm'>{t('hero.scrollDown')}</span>
-              <motion.div
-                animate={{ y: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className='text-2xl'
-              >
-                ↓
-              </motion.div>
+            <div className='flex flex-col items-center gap-1'>
+              <span className='text-xs'>{t('hero.scrollDown')}</span>
+              <span className='text-xl'>↓</span>
             </div>
           </motion.button>
         </motion.div>

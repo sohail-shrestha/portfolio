@@ -1,31 +1,29 @@
 'use client';
+import { aboutMe } from '@/data/portfolio';
 import LanguageSwitcher from '@/i18n/LanguageSwitcher';
 import { motion } from 'motion/react';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Navigation = () => {
-  const { t } = useTranslation('ui');
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useTranslation(['ui', 'portfolio']);
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = useMemo(
     () =>
       [
-        { key: 'home', href: '#home', emoji: '🏠' },
-        { key: 'about', href: '#about', emoji: '👨‍💻' },
-        { key: 'experience', href: '#experience', emoji: '💼' },
-        { key: 'projects', href: '#projects', emoji: '🚀' },
-        { key: 'skills', href: '#skills', emoji: '⚡' },
+        { key: 'home', href: '#home' },
+        { key: 'about', href: '#about' },
+        { key: 'experience', href: '#experience' },
+        { key: 'projects', href: '#projects' },
+        { key: 'skills', href: '#skills' },
       ] as const,
     [],
   );
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
       const sections = navItems.map((item) => item.href.substring(1));
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
@@ -35,10 +33,7 @@ const Navigation = () => {
         }
         return false;
       });
-
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
+      if (currentSection) setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -47,73 +42,69 @@ const Navigation = () => {
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
   };
+
+  const emailLink = aboutMe.getEmailLink();
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
+      className='fixed top-0 left-0 right-0 z-50 bg-[#0c1322]/80 backdrop-blur-xl border-b border-[#494454]/20 shadow-sm'
     >
-      <div className='max-w-6xl mx-auto px-4 xs:px-6 sm:px-8'>
+      <div className='max-w-7xl mx-auto px-5 md:px-20'>
         <div className='flex items-center justify-between h-16'>
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className='flex items-center space-x-2 cursor-pointer'
+            className='cursor-pointer'
             onClick={() => scrollToSection('#home')}
           >
-            <span
-              className={`font-bold text-lg ${
-                isScrolled ? 'text-gray-800' : 'text-white'
-              }`}
-            >
-              Sohail
+            <span className='font-extrabold text-lg text-[#d0bcff] tracking-tighter'>
+              SOHAIL SHRESTHA
             </span>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className='hidden md:flex items-center space-x-1'>
-            {navItems.map((item, index) => (
-              <motion.button
+          <div className='hidden md:flex items-center gap-8'>
+            {navItems.map((item) => (
+              <button
                 key={item.key}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection(item.href)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                  activeSection === item.href.substring(1)
-                    ? 'bg-violet-500 text-white shadow-lg'
-                    : isScrolled
-                      ? 'text-gray-700 hover:bg-violet-100 hover:text-violet-600'
-                      : 'text-white hover:bg-white/20'
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  activeSection === item.key
+                    ? 'text-[#d0bcff] border-b-2 border-[#d0bcff] pb-0.5'
+                    : 'text-[#9CA3AF] hover:text-[#d0bcff]'
                 }`}
               >
-                <span className='mr-2'>{item.emoji}</span>
                 {t(`nav.${item.key}`)}
-              </motion.button>
+              </button>
             ))}
-            <LanguageSwitcher isScrolled={isScrolled} />
+            <LanguageSwitcher isScrolled={false} />
           </div>
 
-          {/* Mobile: language switcher + hamburger */}
-          <div className='md:hidden flex items-center gap-1'>
-            <LanguageSwitcher isScrolled={isScrolled} />
+          {/* Get in Touch CTA */}
+          <div className='hidden md:block'>
+            <motion.a
+              href={emailLink}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className='btn-primary px-6 py-2 rounded-lg text-sm font-bold'
+            >
+              {t('footer.cta')}
+            </motion.a>
+          </div>
+
+          {/* Mobile controls */}
+          <div className='md:hidden flex items-center gap-2'>
+            <LanguageSwitcher isScrolled={false} />
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-lg ${
-                isScrolled ? 'text-gray-700' : 'text-white'
-              }`}
+              className='p-2 rounded-lg text-[#dce2f7]'
             >
               <motion.div
                 animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
@@ -134,10 +125,10 @@ const Navigation = () => {
           height: isMobileMenuOpen ? 'auto' : 0,
         }}
         transition={{ duration: 0.3 }}
-        className='md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 overflow-hidden'
+        className='md:hidden bg-[#141b2b] border-t border-[#494454]/20 overflow-hidden'
       >
         <div className='px-4 py-2 space-y-1'>
-          {navItems.map((item, index) => (
+          {navItems.map((item) => (
             <motion.button
               key={item.key}
               initial={{ opacity: 0, x: -20 }}
@@ -145,19 +136,26 @@ const Navigation = () => {
                 opacity: isMobileMenuOpen ? 1 : 0,
                 x: isMobileMenuOpen ? 0 : -20,
               }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+              transition={{ duration: 0.3 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection(item.href)}
               className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
-                activeSection === item.href.substring(1)
-                  ? 'bg-violet-500 text-white'
-                  : 'text-gray-700 hover:bg-violet-100 hover:text-violet-600'
+                activeSection === item.key
+                  ? 'text-[#d0bcff] bg-[#d0bcff]/10'
+                  : 'text-[#9CA3AF] hover:text-[#d0bcff] hover:bg-[#d0bcff]/5'
               }`}
             >
-              <span className='mr-2'>{item.emoji}</span>
               {t(`nav.${item.key}`)}
             </motion.button>
           ))}
+          <div className='px-4 py-2'>
+            <a
+              href={emailLink}
+              className='btn-primary block text-center px-6 py-2 rounded-lg text-sm font-bold'
+            >
+              {t('footer.cta')}
+            </a>
+          </div>
         </div>
       </motion.div>
     </motion.nav>
