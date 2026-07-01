@@ -1,9 +1,90 @@
 'use client';
 import type { Project } from '@/data/portfolio';
 import { aboutMe, projects } from '@/data/portfolio';
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
+
+const ImageCarousel = ({ images, title }: { images: string[]; title: string }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered || images.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isHovered, images.length]);
+
+  const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+
+  return (
+    <div
+      className='relative h-32 xs:h-40 sm:h-48 overflow-hidden bg-gray-900 group'
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <AnimatePresence mode='wait'>
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className='absolute inset-0'
+        >
+          <Image
+            src={images[currentIndex]}
+            alt={`${title} screenshot ${currentIndex + 1}`}
+            fill
+            className='object-cover'
+            unoptimized
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Prev / Next arrows */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prev}
+            className='absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/75'
+            aria-label='Previous image'
+          >
+            ‹
+          </button>
+          <button
+            onClick={next}
+            className='absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/75'
+            aria-label='Next image'
+          >
+            ›
+          </button>
+        </>
+      )}
+
+      {/* Dot indicators */}
+      {images.length > 1 && (
+        <div className='absolute bottom-2 left-1/2 -translate-x-1/2 z-10 flex gap-1.5'>
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentIndex(i)}
+              aria-label={`Go to image ${i + 1}`}
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
+                i === currentIndex ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const ProjectCard = ({
   project,
@@ -14,6 +95,7 @@ const ProjectCard = ({
 }) => {
   const { t } = useTranslation(['ui', 'portfolio']);
   const td = t as unknown as (key: string, opts?: Record<string, unknown>) => unknown;
+  const [images, setImages] = useState<string[]>([]);
 
   const title = td(`portfolio:projects.${project.id}.title`, {
     defaultValue: project.title,
@@ -21,6 +103,16 @@ const ProjectCard = ({
   const description = td(`portfolio:projects.${project.id}.description`, {
     defaultValue: project.description,
   }) as string;
+
+  useEffect(() => {
+    if (!project.imageFolder) return;
+    fetch(`/api/project-images/${project.imageFolder}`)
+      .then((res) => res.json())
+      .then((data: { images: string[] }) => {
+        if (data.images.length > 0) setImages(data.images);
+      })
+      .catch(() => {});
+  }, [project.imageFolder]);
 
   return (
     <motion.div
@@ -31,15 +123,19 @@ const ProjectCard = ({
       className='bg-white rounded-xl shadow-lg overflow-hidden card-hover group'
     >
       {/* Project Image/Icon */}
-      <div className='h-32 xs:h-40 sm:h-48 bg-gradient-to-br from-violet-400 to-indigo-500 flex items-center justify-center text-4xl xs:text-5xl sm:text-6xl text-white relative overflow-hidden'>
-        <motion.div
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          transition={{ duration: 0.3 }}
-        >
-          💻
-        </motion.div>
-        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300'></div>
-      </div>
+      {images.length > 0 ? (
+        <ImageCarousel images={images} title={title} />
+      ) : (
+        <div className='h-32 xs:h-40 sm:h-48 bg-gradient-to-br from-violet-400 to-indigo-500 flex items-center justify-center text-4xl xs:text-5xl sm:text-6xl text-white relative overflow-hidden'>
+          <motion.div
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ duration: 0.3 }}
+          >
+            💻
+          </motion.div>
+          <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300'></div>
+        </div>
+      )}
 
       <div className='p-4 xs:p-5 sm:p-6'>
         <motion.h3

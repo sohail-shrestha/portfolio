@@ -6,6 +6,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   image?: string;
+  imageFolder?: string;
 }
 
 export interface Experience {
@@ -49,6 +50,7 @@ export const projects: Project[] = [
     id: '5',
     title: 'Quintace',
     liveUrl: 'https://quintace.ai/',
+    imageFolder: 'quintace',
     description: 'A platform to practice and play poker.',
     technologies: [
       'Vue.js',
@@ -65,6 +67,7 @@ export const projects: Project[] = [
   {
     id: '1',
     title: 'G LNK',
+    imageFolder: 'glnk',
     description:
       'A platform for hiring healthcare providers with the help of AI. ',
     technologies: [
@@ -83,6 +86,7 @@ export const projects: Project[] = [
   {
     id: '2',
     title: 'Mynth',
+    imageFolder: 'mynth',
     description: 'A platform for exchanging digital assets on blockchain.',
     technologies: [
       'Docker',
@@ -98,6 +102,7 @@ export const projects: Project[] = [
   {
     id: '3',
     title: 'Tootle',
+    imageFolder: 'tootle',
     description: "Nepal's first ride-sharing app.",
     technologies: [
       'Native Android',
@@ -115,6 +120,7 @@ export const projects: Project[] = [
     id: '4',
     title: 'Husslup (No longer Active)',
     liveUrl: 'https://www.producthunt.com/products/husslup',
+    imageFolder: 'husslup',
     description:
       "A social media platform for connecting Hollywood's top talent behind the camera.",
     technologies: [
