@@ -332,6 +332,10 @@ export const skills: Skill[] = [
       'Code Review',
       'Performance Optimization',
       'Security Best Practices',
+      'Mentoring',
+      'Team Leadership',
+      'CI/CD',
+      'Testing',
     ],
   },
 ];
