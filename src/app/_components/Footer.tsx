@@ -31,13 +31,6 @@ const Footer = () => {
             viewport={{ once: true }}
             className='flex justify-center items-center space-x-2 mb-6'
           >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-              className='w-8 h-8 bg-gradient-to-r from-violet-500 to-indigo-500 rounded-lg flex items-center justify-center text-white font-bold'
-            >
-              S
-            </motion.div>
             <span className='text-xl font-bold'>{aboutMe.name}</span>
           </motion.div>
 

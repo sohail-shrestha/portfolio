@@ -19,7 +19,7 @@ const Navigation = () => {
         { key: 'projects', href: '#projects', emoji: '🚀' },
         { key: 'skills', href: '#skills', emoji: '⚡' },
       ] as const,
-    []
+    [],
   );
 
   useEffect(() => {
@@ -70,13 +70,6 @@ const Navigation = () => {
             className='flex items-center space-x-2 cursor-pointer'
             onClick={() => scrollToSection('#home')}
           >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-              className='w-8 h-8 bg-gradient-to-r from-violet-500 to-indigo-500 rounded-lg flex items-center justify-center text-white font-bold'
-            >
-              S
-            </motion.div>
             <span
               className={`font-bold text-lg ${
                 isScrolled ? 'text-gray-800' : 'text-white'
@@ -101,8 +94,8 @@ const Navigation = () => {
                   activeSection === item.href.substring(1)
                     ? 'bg-violet-500 text-white shadow-lg'
                     : isScrolled
-                    ? 'text-gray-700 hover:bg-violet-100 hover:text-violet-600'
-                    : 'text-white hover:bg-white/20'
+                      ? 'text-gray-700 hover:bg-violet-100 hover:text-violet-600'
+                      : 'text-white hover:bg-white/20'
                 }`}
               >
                 <span className='mr-2'>{item.emoji}</span>
