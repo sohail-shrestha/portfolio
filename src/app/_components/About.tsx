@@ -3,6 +3,7 @@ import { aboutMe } from '@/data/portfolio';
 import { motion } from 'motion/react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 
 const STATS = [
   { number: '8+', labelKey: 'about.stats.yearsExperience', borderColor: '#d0bcff' },
@@ -59,9 +60,14 @@ const About = () => {
             className='relative'
           >
             <div className='aspect-square rounded-3xl overflow-hidden glass-panel p-3'>
-              <div className='w-full h-full rounded-2xl bg-[#2e3545] flex items-center justify-center relative group overflow-hidden'>
-                {/* Initials placeholder */}
-                <div className='text-8xl font-extrabold text-gradient select-none'>SS</div>
+              <div className='w-full h-full rounded-2xl relative group overflow-hidden'>
+                <Image
+                  src='/images/profile-picture.png'
+                  alt='Sohail Shrestha'
+                  fill
+                  className='object-cover object-top'
+                  priority
+                />
                 <div className='absolute inset-0 bg-gradient-to-t from-[#0c1322] via-transparent to-transparent opacity-40' />
               </div>
             </div>
