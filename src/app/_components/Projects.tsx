@@ -4,10 +4,16 @@ import { aboutMe, projects } from '@/data/portfolio';
 import { AnimatePresence, motion } from 'motion/react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { FaGithub } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
+import { FaGithub } from 'react-icons/fa';
 
-const ImageCarousel = ({ images, title }: { images: string[]; title: string }) => {
+const ImageCarousel = ({
+  images,
+  title,
+}: {
+  images: string[];
+  title: string;
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -19,12 +25,13 @@ const ImageCarousel = ({ images, title }: { images: string[]; title: string }) =
     return () => clearInterval(interval);
   }, [isHovered, images.length]);
 
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const prev = () =>
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
 
   return (
     <div
-      className='relative h-32 xs:h-40 sm:h-48 overflow-hidden bg-gray-900 group'
+      className='relative aspect-video overflow-hidden bg-[#191f2f] group'
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -41,13 +48,15 @@ const ImageCarousel = ({ images, title }: { images: string[]; title: string }) =
             src={images[currentIndex]}
             alt={`${title} screenshot ${currentIndex + 1}`}
             fill
-            className='object-cover'
+            className='object-cover group-hover:scale-105 transition-transform duration-500'
             unoptimized
           />
         </motion.div>
       </AnimatePresence>
+      {/* Gradient overlay */}
+      <div className='absolute inset-0 bg-gradient-to-t from-[#0c1322]/80 to-transparent pointer-events-none' />
 
-      {/* Prev / Next arrows */}
+      {/* Arrows */}
       {images.length > 1 && (
         <>
           <button
@@ -67,7 +76,7 @@ const ImageCarousel = ({ images, title }: { images: string[]; title: string }) =
         </>
       )}
 
-      {/* Dot indicators */}
+      {/* Dots */}
       {images.length > 1 && (
         <div className='absolute bottom-2 left-1/2 -translate-x-1/2 z-10 flex gap-1.5'>
           {images.map((_, i) => (
@@ -76,7 +85,9 @@ const ImageCarousel = ({ images, title }: { images: string[]; title: string }) =
               onClick={() => setCurrentIndex(i)}
               aria-label={`Go to image ${i + 1}`}
               className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
-                i === currentIndex ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'
+                i === currentIndex
+                  ? 'bg-white scale-125'
+                  : 'bg-white/50 hover:bg-white/75'
               }`}
             />
           ))}
@@ -86,6 +97,13 @@ const ImageCarousel = ({ images, title }: { images: string[]; title: string }) =
   );
 };
 
+// Assign tag colors per project
+const TAG_COLORS = [
+  ['#d0bcff20', '#d0bcff', '#c0c1ff20', '#c0c1ff'],
+  ['#eac33e20', '#eac33e', '#4F46E520', '#a5b4fc'],
+  ['#d0bcff20', '#d0bcff', '#c0c1ff20', '#c0c1ff'],
+];
+
 const ProjectCard = ({
   project,
   index,
@@ -94,8 +112,12 @@ const ProjectCard = ({
   index: number;
 }) => {
   const { t } = useTranslation(['ui', 'portfolio']);
-  const td = t as unknown as (key: string, opts?: Record<string, unknown>) => unknown;
+  const td = t as unknown as (
+    key: string,
+    opts?: Record<string, unknown>,
+  ) => unknown;
   const [images, setImages] = useState<string[]>([]);
+  const tagColors = TAG_COLORS[index % TAG_COLORS.length];
 
   const title = td(`portfolio:projects.${project.id}.title`, {
     defaultValue: project.title,
@@ -116,90 +138,58 @@ const ProjectCard = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className='bg-white rounded-xl shadow-lg overflow-hidden card-hover group'
+      whileHover={{ y: -8 }}
+      className='glass-panel rounded-3xl overflow-hidden flex flex-col'
     >
-      {/* Project Image/Icon */}
+      {/* Image */}
       {images.length > 0 ? (
         <ImageCarousel images={images} title={title} />
       ) : (
-        <div className='h-32 xs:h-40 sm:h-48 bg-gradient-to-br from-violet-400 to-indigo-500 flex items-center justify-center text-4xl xs:text-5xl sm:text-6xl text-white relative overflow-hidden'>
+        <div className='aspect-video bg-gradient-to-br from-[#6d3bd7]/40 to-[#3131c0]/40 flex items-center justify-center text-5xl relative overflow-hidden group'>
           <motion.div
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ duration: 0.3 }}
           >
             💻
           </motion.div>
-          <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300'></div>
+          <div className='absolute inset-0 bg-gradient-to-t from-[#0c1322]/80 to-transparent' />
         </div>
       )}
 
-      <div className='p-4 xs:p-5 sm:p-6'>
-        <motion.h3
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
-          viewport={{ once: true }}
-          className='text-lg xs:text-xl sm:text-2xl font-bold text-gray-800 mb-2 xs:mb-3 group-hover:text-violet-600 transition-colors duration-300'
-        >
-          {title}
-        </motion.h3>
-
-        <motion.p
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
-          viewport={{ once: true }}
-          className='text-gray-600 mb-3 xs:mb-4 text-sm leading-relaxed'
-        >
+      <div className='p-4 flex flex-col flex-1'>
+        <h3 className='text-lg font-bold text-[#dce2f7] mb-2'>{title}</h3>
+        <p className='text-[#9CA3AF] text-sm leading-relaxed mb-4 flex-1'>
           {description}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
-          viewport={{ once: true }}
-          className='flex flex-wrap gap-1.5 xs:gap-2 mb-3 xs:mb-4'
-        >
-          {project.technologies.map((tech, techIndex) => (
-            <motion.span
+        {/* Tech pills */}
+        <div className='flex flex-wrap gap-1.5 mb-5'>
+          {project.technologies.slice(2).map((tech) => (
+            <span
               key={tech}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.1 + 0.5 + techIndex * 0.05,
-              }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className='bg-violet-100 text-violet-700 px-2 xs:px-3 py-1 rounded-full text-xs font-medium'
+              className='bg-[#2e3545]/60 text-[#dce2f7] px-2.5 py-1 rounded-md text-xs font-medium'
             >
               {tech}
-            </motion.span>
+            </span>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
-          viewport={{ once: true }}
-          className='flex flex-col xs:flex-row gap-2 xs:gap-3'
-        >
+        {/* Links */}
+        <div className='flex gap-3'>
           {project.githubUrl && (
             <motion.a
               href={project.githubUrl}
               target='_blank'
               rel='noopener noreferrer'
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -1 }}
               whileTap={{ scale: 0.95 }}
-              className='flex-1 bg-gray-800 text-white py-2.5 xs:py-2 px-4 rounded-lg text-center font-medium hover:bg-gray-700 transition-colors duration-300 text-sm'
+              className='flex-1 glass-panel text-[#dce2f7] py-2 px-4 rounded-lg text-center font-medium text-sm hover:border-[#d0bcff]/30 transition-colors flex items-center justify-center gap-2'
             >
-              <FaGithub size={16} className="mr-2 inline-block" />{t('projects.code')}
+              <FaGithub size={14} /> {t('projects.code')}
             </motion.a>
           )}
           {project.liveUrl && (
@@ -207,14 +197,14 @@ const ProjectCard = ({
               href={project.liveUrl}
               target='_blank'
               rel='noopener noreferrer'
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -1 }}
               whileTap={{ scale: 0.95 }}
-              className='flex-1 bg-violet-600 text-white py-2.5 xs:py-2 px-4 rounded-lg text-center font-medium hover:bg-violet-700 transition-colors duration-300 text-sm'
+              className='flex-1 btn-primary py-2 px-4 rounded-lg text-center font-medium text-sm flex items-center justify-center gap-2'
             >
-              <span className='mr-2'>🚀</span>{t('projects.live')}
+              🚀 {t('projects.live')}
             </motion.a>
           )}
-        </motion.div>
+        </div>
       </div>
     </motion.div>
   );
@@ -222,76 +212,33 @@ const ProjectCard = ({
 
 const Projects = () => {
   const { t } = useTranslation(['ui', 'portfolio']);
-
-  const subject = t('portfolio:emailTemplate.subject');
-  const body = t('portfolio:emailTemplate.body');
-  const emailLink = `mailto:${aboutMe.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const emailLink = aboutMe.getEmailLink();
 
   return (
-    <section
-      id='projects'
-      className='min-h-screen bg-gradient-to-br from-indigo-50 to-violet-100 py-16 px-4 xs:px-6 sm:px-8'
-    >
-      <div className='max-w-6xl mx-auto'>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className='text-center mb-12 xs:mb-16'
-        >
-          <h2 className='text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-gradient mb-4 xs:mb-6'>
-            {t('projects.heading')}
-          </h2>
-          <div className='w-20 xs:w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 mx-auto mb-4 xs:mb-6'></div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className='text-gray-600 max-w-2xl mx-auto text-sm xs:text-base sm:text-lg px-4'
+    <section id='projects' className='py-24 px-5 md:px-20 bg-[#0c1322]'>
+      <div className='max-w-7xl mx-auto'>
+        <div className='flex flex-col md:flex-row justify-between items-end mb-16 gap-6'>
+          <div>
+            <h2 className='text-3xl md:text-4xl font-bold text-[#dce2f7] mb-3'>
+              {t('projects.heading').split(' ')[0]}{' '}
+              <span className='text-[#eac33e]'>{t('projects.heading').split(' ').slice(1).join(' ')}</span>
+            </h2>
+            <p className='text-[#9CA3AF] max-w-xl'>{t('projects.subtitle')}</p>
+          </div>
+          <motion.a
+            href={emailLink}
+            whileHover={{ x: 4 }}
+            className='text-[#d0bcff] font-bold hover:underline flex items-center gap-2 text-sm shrink-0'
           >
-            {t('projects.subtitle')}
-          </motion.p>
-        </motion.div>
+            {t('projects.cta')} →
+          </motion.a>
+        </div>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
-
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-          className='text-center mt-12 xs:mt-16'
-        >
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            viewport={{ once: true }}
-            className='text-gray-600 mb-4 xs:mb-6 text-base xs:text-lg px-4'
-          >
-            {t('projects.ctaQuestion')}
-          </motion.p>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className='inline-block px-4'
-          >
-            <a
-              href={emailLink}
-              className='block bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-6 xs:px-8 py-3 xs:py-4 rounded-lg font-semibold text-base xs:text-lg hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl text-center'
-            >
-              <span className='mr-2'>💬</span>
-              {t('projects.cta')}
-            </a>
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );

@@ -16,10 +16,12 @@
     "tagline": "Je crée de belles applications web fonctionnelles et évolutives qui font la différence.",
     "viewWork": "Voir mon travail",
     "aboutMe": "À propos de moi",
-    "scrollDown": "Défiler vers le bas"
+    "scrollDown": "Défiler vers le bas",
+    "availableForHire": "Disponible à l'embauche"
   },
   "about": {
     "heading": "À propos de moi",
+    "quote": "Le code est mon métier, la scalabilité mon obsession.",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "resume": "CV",
