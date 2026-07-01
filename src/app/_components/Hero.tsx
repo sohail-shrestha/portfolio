@@ -43,7 +43,7 @@ const Hero = () => {
           className='mb-6'
         >
           <span className='inline-block px-4 py-1 rounded-full bg-[#d0bcff]/10 border border-[#d0bcff]/20 text-[#d0bcff] text-xs font-bold uppercase tracking-widest font-mono'>
-            Available for hire
+            {t('hero.availableForHire')}
           </span>
         </motion.div>
 

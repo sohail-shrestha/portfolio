@@ -16,10 +16,12 @@
     "tagline": "我构建美观、功能强大且可扩展的 Web 应用程序，创造真正的价值。",
     "viewWork": "查看我的作品",
     "aboutMe": "关于我",
-    "scrollDown": "向下滚动"
+    "scrollDown": "向下滚动",
+    "availableForHire": "招募中"
   },
   "about": {
     "heading": "关于我",
+    "quote": "代码是我的技艺，可扩展性是我的执念。",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "resume": "简历",

@@ -16,10 +16,12 @@
     "tagline": "I create beautiful, functional, and scalable web applications that make a difference.",
     "viewWork": "View My Work",
     "aboutMe": "About Me",
-    "scrollDown": "Scroll Down"
+    "scrollDown": "Scroll Down",
+    "availableForHire": "Available for hire"
   },
   "about": {
     "heading": "About Me",
+    "quote": "Code is my craft, scalability my obsession.",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "resume": "Resume",

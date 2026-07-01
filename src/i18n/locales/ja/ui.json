@@ -16,10 +16,12 @@
     "tagline": "美しく、機能的でスケーラブルなウェブアプリケーションを作成しています。",
     "viewWork": "作品を見る",
     "aboutMe": "自己紹介",
-    "scrollDown": "スクロールダウン"
+    "scrollDown": "スクロールダウン",
+    "availableForHire": "採用募集中"
   },
   "about": {
     "heading": "自己紹介",
+    "quote": "コードは私の技、スケーラビリティは私の情熱。",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "resume": "履歴書",

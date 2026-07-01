@@ -276,8 +276,8 @@ const Experience = () => {
           className='text-center mb-16'
         >
           <h2 className='text-3xl md:text-4xl font-bold text-[#dce2f7] mb-4'>
-            Professional{' '}
-            <span className='text-[#c0c1ff]'>Experience</span>
+            {t('experience.heading').split(' ')[0]}{' '}
+            <span className='text-[#c0c1ff]'>{t('experience.heading').split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className='text-[#9CA3AF] max-w-xl mx-auto'>{t('experience.subtitle')}</p>
         </motion.div>

@@ -16,10 +16,12 @@
     "tagline": "Ich entwickle schöne, funktionale und skalierbare Webanwendungen, die einen Unterschied machen.",
     "viewWork": "Meine Arbeit ansehen",
     "aboutMe": "Über mich",
-    "scrollDown": "Nach unten scrollen"
+    "scrollDown": "Nach unten scrollen",
+    "availableForHire": "Verfügbar für Projekte"
   },
   "about": {
     "heading": "Über mich",
+    "quote": "Code ist mein Handwerk, Skalierbarkeit meine Obsession.",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "resume": "Lebenslauf",

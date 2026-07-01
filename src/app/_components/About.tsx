@@ -74,7 +74,7 @@ const About = () => {
               className='absolute -bottom-6 -right-4 md:-right-6 glass-panel px-5 py-3 rounded-2xl border border-[#d0bcff]/20 hidden sm:block max-w-[220px]'
             >
               <p className='font-mono text-[#d0bcff] text-xs italic'>
-                "Code is my craft, scalability my obsession."
+                "{t('about.quote')}"
               </p>
             </motion.div>
           </motion.div>

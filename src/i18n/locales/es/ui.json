@@ -16,10 +16,12 @@
     "tagline": "Creo aplicaciones web hermosas, funcionales y escalables que marcan la diferencia.",
     "viewWork": "Ver mi trabajo",
     "aboutMe": "Sobre mí",
-    "scrollDown": "Desplazar hacia abajo"
+    "scrollDown": "Desplazar hacia abajo",
+    "availableForHire": "Disponible para contratar"
   },
   "about": {
     "heading": "Sobre mí",
+    "quote": "El código es mi arte, la escalabilidad mi obsesión.",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "resume": "Currículum",

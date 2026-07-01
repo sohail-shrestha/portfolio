@@ -220,7 +220,8 @@ const Projects = () => {
         <div className='flex flex-col md:flex-row justify-between items-end mb-16 gap-6'>
           <div>
             <h2 className='text-3xl md:text-4xl font-bold text-[#dce2f7] mb-3'>
-              Featured <span className='text-[#eac33e]'>Projects</span>
+              {t('projects.heading').split(' ')[0]}{' '}
+              <span className='text-[#eac33e]'>{t('projects.heading').split(' ').slice(1).join(' ')}</span>
             </h2>
             <p className='text-[#9CA3AF] max-w-xl'>{t('projects.subtitle')}</p>
           </div>
