@@ -97,13 +97,6 @@ const ImageCarousel = ({
   );
 };
 
-// Assign tag colors per project
-const TAG_COLORS = [
-  ['#d0bcff20', '#d0bcff', '#c0c1ff20', '#c0c1ff'],
-  ['#eac33e20', '#eac33e', '#4F46E520', '#a5b4fc'],
-  ['#d0bcff20', '#d0bcff', '#c0c1ff20', '#c0c1ff'],
-];
-
 const ProjectCard = ({
   project,
   index,
@@ -117,7 +110,6 @@ const ProjectCard = ({
     opts?: Record<string, unknown>,
   ) => unknown;
   const [images, setImages] = useState<string[]>([]);
-  const tagColors = TAG_COLORS[index % TAG_COLORS.length];
 
   const title = td(`portfolio:projects.${project.id}.title`, {
     defaultValue: project.title,
@@ -146,19 +138,26 @@ const ProjectCard = ({
       className='glass-panel rounded-3xl overflow-hidden flex flex-col'
     >
       {/* Image */}
-      {images.length > 0 ? (
-        <ImageCarousel images={images} title={title} />
-      ) : (
-        <div className='aspect-video bg-gradient-to-br from-[#6d3bd7]/40 to-[#3131c0]/40 flex items-center justify-center text-5xl relative overflow-hidden group'>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ duration: 0.3 }}
-          >
-            💻
-          </motion.div>
-          <div className='absolute inset-0 bg-gradient-to-t from-[#0c1322]/80 to-transparent' />
-        </div>
-      )}
+      <div className='relative'>
+        {images.length > 0 ? (
+          <ImageCarousel images={images} title={title} />
+        ) : (
+          <div className='aspect-video bg-gradient-to-br from-[#6d3bd7]/40 to-[#3131c0]/40 flex items-center justify-center text-5xl relative overflow-hidden group'>
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ duration: 0.3 }}
+            >
+              💻
+            </motion.div>
+            <div className='absolute inset-0 bg-gradient-to-t from-[#0c1322]/80 to-transparent' />
+          </div>
+        )}
+        {project.discontinued && (
+          <span className='absolute top-2.5 right-2.5 z-20 bg-[#374151]/90 text-[#9CA3AF] text-xs font-semibold px-2.5 py-1 rounded-full tracking-wide'>
+            Discontinued
+          </span>
+        )}
+      </div>
 
       <div className='p-4 flex flex-col flex-1'>
         <h3 className='text-lg font-bold text-[#dce2f7] mb-2'>{title}</h3>
@@ -193,16 +192,22 @@ const ProjectCard = ({
             </motion.a>
           )}
           {project.liveUrl && (
-            <motion.a
-              href={project.liveUrl}
-              target='_blank'
-              rel='noopener noreferrer'
-              whileHover={{ y: -1 }}
-              whileTap={{ scale: 0.95 }}
-              className='flex-1 btn-primary py-2 px-4 rounded-lg text-center font-medium text-sm flex items-center justify-center gap-2'
-            >
-              🚀 {t('projects.live')}
-            </motion.a>
+            project.discontinued ? (
+              <span className='flex-1 btn-primary py-2 px-4 rounded-lg text-center font-medium text-sm flex items-center justify-center gap-2 opacity-40 cursor-not-allowed pointer-events-none'>
+                🚀 {t('projects.live')}
+              </span>
+            ) : (
+              <motion.a
+                href={project.liveUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                className='flex-1 btn-primary py-2 px-4 rounded-lg text-center font-medium text-sm flex items-center justify-center gap-2'
+              >
+                🚀 {t('projects.live')}
+              </motion.a>
+            )
           )}
         </div>
       </div>
@@ -221,7 +226,9 @@ const Projects = () => {
           <div>
             <h2 className='text-3xl md:text-4xl font-bold text-[#dce2f7] mb-3'>
               {t('projects.heading').split(' ')[0]}{' '}
-              <span className='text-[#eac33e]'>{t('projects.heading').split(' ').slice(1).join(' ')}</span>
+              <span className='text-[#eac33e]'>
+                {t('projects.heading').split(' ').slice(1).join(' ')}
+              </span>
             </h2>
             <p className='text-[#9CA3AF] max-w-xl'>{t('projects.subtitle')}</p>
           </div>
