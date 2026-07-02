@@ -80,8 +80,7 @@ export const projects: Project[] = [
       'MongoDB',
     ],
     githubUrl: '',
-    liveUrl:
-      'https://www.ycombinator.com/launches/Mx9-g-lnk-simplifying-collaboration-between-pharma-healthcare-professionals',
+    liveUrl: 'https://www.glnkco.com/',
     image: '/images/glink.png',
   },
   {
