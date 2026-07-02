@@ -97,13 +97,6 @@ const ImageCarousel = ({
   );
 };
 
-// Assign tag colors per project
-const TAG_COLORS = [
-  ['#d0bcff20', '#d0bcff', '#c0c1ff20', '#c0c1ff'],
-  ['#eac33e20', '#eac33e', '#4F46E520', '#a5b4fc'],
-  ['#d0bcff20', '#d0bcff', '#c0c1ff20', '#c0c1ff'],
-];
-
 const ProjectCard = ({
   project,
   index,
@@ -117,7 +110,6 @@ const ProjectCard = ({
     opts?: Record<string, unknown>,
   ) => unknown;
   const [images, setImages] = useState<string[]>([]);
-  const tagColors = TAG_COLORS[index % TAG_COLORS.length];
 
   const title = td(`portfolio:projects.${project.id}.title`, {
     defaultValue: project.title,
@@ -193,16 +185,22 @@ const ProjectCard = ({
             </motion.a>
           )}
           {project.liveUrl && (
-            <motion.a
-              href={project.liveUrl}
-              target='_blank'
-              rel='noopener noreferrer'
-              whileHover={{ y: -1 }}
-              whileTap={{ scale: 0.95 }}
-              className='flex-1 btn-primary py-2 px-4 rounded-lg text-center font-medium text-sm flex items-center justify-center gap-2'
-            >
-              🚀 {t('projects.live')}
-            </motion.a>
+            project.discontinued ? (
+              <span className='flex-1 btn-primary py-2 px-4 rounded-lg text-center font-medium text-sm flex items-center justify-center gap-2 opacity-40 cursor-not-allowed pointer-events-none'>
+                🚀 {t('projects.live')}
+              </span>
+            ) : (
+              <motion.a
+                href={project.liveUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                className='flex-1 btn-primary py-2 px-4 rounded-lg text-center font-medium text-sm flex items-center justify-center gap-2'
+              >
+                🚀 {t('projects.live')}
+              </motion.a>
+            )
           )}
         </div>
       </div>
@@ -221,7 +219,9 @@ const Projects = () => {
           <div>
             <h2 className='text-3xl md:text-4xl font-bold text-[#dce2f7] mb-3'>
               {t('projects.heading').split(' ')[0]}{' '}
-              <span className='text-[#eac33e]'>{t('projects.heading').split(' ').slice(1).join(' ')}</span>
+              <span className='text-[#eac33e]'>
+                {t('projects.heading').split(' ').slice(1).join(' ')}
+              </span>
             </h2>
             <p className='text-[#9CA3AF] max-w-xl'>{t('projects.subtitle')}</p>
           </div>

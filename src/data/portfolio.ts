@@ -7,6 +7,7 @@ export interface Project {
   liveUrl?: string;
   image?: string;
   imageFolder?: string;
+  discontinued?: boolean;
 }
 
 export interface Experience {
@@ -98,6 +99,7 @@ export const projects: Project[] = [
       'Microservices',
     ],
     liveUrl: 'https://www.mynth.ai/',
+    discontinued: true,
   },
   {
     id: '3',
@@ -118,11 +120,12 @@ export const projects: Project[] = [
   },
   {
     id: '4',
-    title: 'Husslup (No longer Active)',
+    title: 'Husslup',
     liveUrl: 'https://www.producthunt.com/products/husslup',
     imageFolder: 'husslup',
     description:
       "A social media platform for connecting Hollywood's top talent behind the camera.",
+    discontinued: true,
     technologies: [
       'React',
       'React Native',
