@@ -399,7 +399,7 @@ Best regards,`,
 export const aboutMe = {
   name: 'Sohail Shrestha',
   title: 'Senior Software Engineer',
-  description: `I'm a passionate senior software engineer with 8+ years of experience building scalable web applications and leading development teams. I specialize in full-stack development with expertise in modern JavaScript frameworks, cloud architecture, and microservices. I have a proven track record of delivering high-quality software solutions that serve millions of users while mentoring teams and driving technical excellence.`,
+  description: `I'm a Senior Software Engineer with 8+ years of experience building scalable web applications and leading development teams. I specialize in full-stack development with React, Node.js, TypeScript, Python, and cloud infrastructure on AWS. I have a proven track record delivering software that serves millions of users, from Nepal's first ride-sharing app to Y Combinator-backed startups. I'm currently open to new opportunities — if you're hiring a senior software engineer or looking for remote technical expertise, let's talk.`,
   email: 'sohailshrestha2@gmail.com',
   github: 'https://github.com/sohail-shrestha',
   linkedin: 'https://www.linkedin.com/in/sohail-shrestha-84a04a143/',
