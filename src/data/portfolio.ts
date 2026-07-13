@@ -403,7 +403,7 @@ export const aboutMe = {
   email: 'sohailshrestha2@gmail.com',
   github: 'https://github.com/sohail-shrestha',
   linkedin: 'https://www.linkedin.com/in/sohail-shrestha-84a04a143/',
-  resume: '/Sohail_CV.pdf',
+  resume: '/Sohail_Shrestha_CV.pdf',
   getEmailLink() {
     const encodedSubject = encodeURIComponent(emailTemplate.subject);
     const encodedBody = encodeURIComponent(emailTemplate.body);
