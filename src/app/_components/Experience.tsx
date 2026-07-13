@@ -21,16 +21,24 @@ interface ExperienceModalProps {
   colorIdx: number;
 }
 
-const ExperienceModal = ({ experience, isOpen, onClose, colorIdx }: ExperienceModalProps) => {
+const ExperienceModal = ({
+  experience,
+  isOpen,
+  onClose,
+  colorIdx,
+}: ExperienceModalProps) => {
   const { t } = useTranslation(['ui', 'portfolio']);
-  const td = t as unknown as (key: string, opts?: Record<string, unknown>) => unknown;
+  const td = t as unknown as (
+    key: string,
+    opts?: Record<string, unknown>,
+  ) => unknown;
   const color = DOT_COLORS[colorIdx % DOT_COLORS.length];
 
   if (!isOpen) return null;
 
   const descriptions = td(
     `portfolio:experiences.${experience.id}.description`,
-    { returnObjects: true }
+    { returnObjects: true },
   ) as string[];
   const title = td(`portfolio:experiences.${experience.id}.title`, {
     defaultValue: experience.title,
@@ -59,11 +67,17 @@ const ExperienceModal = ({ experience, isOpen, onClose, colorIdx }: ExperienceMo
           {/* Modal Header */}
           <div
             className='sticky top-0 border-b border-[#494454]/40 p-6 rounded-t-2xl'
-            style={{ background: 'rgba(20, 27, 43, 0.95)', backdropFilter: 'blur(12px)' }}
+            style={{
+              background: 'rgba(20, 27, 43, 0.95)',
+              backdropFilter: 'blur(12px)',
+            }}
           >
             <div className='flex justify-between items-start'>
               <div>
-                <h3 className='text-xl font-bold mb-1' style={{ color: color.text }}>
+                <h3
+                  className='text-xl font-bold mb-1'
+                  style={{ color: color.text }}
+                >
                   {title}
                 </h3>
                 <p className='text-[#9CA3AF] font-medium text-sm'>
@@ -104,8 +118,15 @@ const ExperienceModal = ({ experience, isOpen, onClose, colorIdx }: ExperienceMo
                     transition={{ duration: 0.4, delay: index * 0.08 }}
                     className='flex items-start gap-3'
                   >
-                    <span className='mt-1 text-sm shrink-0' style={{ color: color.text }}>•</span>
-                    <p className='text-[#9CA3AF] leading-relaxed text-sm'>{desc}</p>
+                    <span
+                      className='mt-1 text-sm shrink-0'
+                      style={{ color: color.text }}
+                    >
+                      •
+                    </span>
+                    <p className='text-[#9CA3AF] leading-relaxed text-sm'>
+                      {desc}
+                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -141,7 +162,10 @@ const ExperienceCard = ({
   index: number;
 }) => {
   const { t } = useTranslation(['ui', 'portfolio']);
-  const td = t as unknown as (key: string, opts?: Record<string, unknown>) => unknown;
+  const td = t as unknown as (
+    key: string,
+    opts?: Record<string, unknown>,
+  ) => unknown;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const color = DOT_COLORS[index % DOT_COLORS.length];
 
@@ -153,7 +177,7 @@ const ExperienceCard = ({
   }) as string;
   const descriptions = td(
     `portfolio:experiences.${experience.id}.description`,
-    { returnObjects: true }
+    { returnObjects: true },
   ) as string[];
 
   const showMoreThreshold = 3;
@@ -179,7 +203,10 @@ const ExperienceCard = ({
             border: `1px solid ${color.border}`,
           }}
         >
-          <div className='w-3 h-3 rounded-full' style={{ background: color.dot }} />
+          <div
+            className='w-3 h-3 rounded-full'
+            style={{ background: color.dot }}
+          />
           {/* line below */}
           {index < experiences.length - 1 && (
             <div
@@ -203,8 +230,12 @@ const ExperienceCard = ({
         <div className='flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2'>
           <div>
             <h3 className='text-lg font-bold text-[#dce2f7]'>{title}</h3>
-            <p className='font-medium text-sm' style={{ color: color.text }}>{company}</p>
-            <p className='text-[#9CA3AF] text-xs mt-0.5'>{experience.location}</p>
+            <p className='font-medium text-sm' style={{ color: color.text }}>
+              {company}
+            </p>
+            <p className='text-[#9CA3AF] text-xs mt-0.5'>
+              {experience.location}
+            </p>
           </div>
           <span
             className='self-start md:self-auto px-3 py-1 rounded-full text-xs font-mono font-medium shrink-0'
@@ -220,7 +251,12 @@ const ExperienceCard = ({
         <div className='space-y-2 mb-4'>
           {displayedDescriptions.map((desc, descIndex) => (
             <div key={descIndex} className='flex items-start gap-2'>
-              <span className='mt-1 text-xs shrink-0' style={{ color: color.text }}>•</span>
+              <span
+                className='mt-1 text-xs shrink-0'
+                style={{ color: color.text }}
+              >
+                •
+              </span>
               <p className='text-[#9CA3AF] text-sm leading-relaxed'>{desc}</p>
             </div>
           ))}
@@ -232,7 +268,8 @@ const ExperienceCard = ({
             >
               {t('experience.showMore', {
                 count: descriptions.length - showMoreThreshold,
-              })} →
+              })}{' '}
+              →
             </button>
           )}
         </div>
@@ -263,10 +300,7 @@ const Experience = () => {
   const { t } = useTranslation('ui');
 
   return (
-    <section
-      id='experience'
-      className='py-24 px-5 md:px-20 bg-[#070e1d]/50'
-    >
+    <section id='experience' className='py-24 px-5 md:px-20 bg-[#070e1d]/50'>
       <div className='max-w-7xl mx-auto'>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -277,14 +311,22 @@ const Experience = () => {
         >
           <h2 className='text-3xl md:text-4xl font-bold text-[#dce2f7] mb-4'>
             {t('experience.heading').split(' ')[0]}{' '}
-            <span className='text-[#c0c1ff]'>{t('experience.heading').split(' ').slice(1).join(' ')}</span>
+            <span className='text-[#c0c1ff]'>
+              {t('experience.heading').split(' ').slice(1).join(' ')}
+            </span>
           </h2>
-          <p className='text-[#9CA3AF] max-w-xl mx-auto'>{t('experience.subtitle')}</p>
+          <p className='text-[#9CA3AF] max-w-xl mx-auto'>
+            {t('experience.subtitle')}
+          </p>
         </motion.div>
 
         <div className='max-w-3xl mx-auto'>
           {experiences.map((experience, index) => (
-            <ExperienceCard key={experience.id} experience={experience} index={index} />
+            <ExperienceCard
+              key={experience.id}
+              experience={experience}
+              index={index}
+            />
           ))}
         </div>
 
@@ -297,7 +339,7 @@ const Experience = () => {
           className='text-center mt-10'
         >
           <motion.a
-            href='/Sohail_CV.pdf'
+            href='/Sohail_Shrestha_CV.pdf'
             target='_blank'
             rel='noopener noreferrer'
             whileHover={{ y: -2 }}
