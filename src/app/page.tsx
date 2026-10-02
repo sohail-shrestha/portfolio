@@ -1,6 +1,7 @@
 'use client';
 import {
   About,
+  AiChat,
   Experience,
   Footer,
   Hero,
@@ -19,6 +20,7 @@ export default function Home() {
       <Projects />
       <Skills />
       <Footer />
+      <AiChat />
     </div>
   );
 }
