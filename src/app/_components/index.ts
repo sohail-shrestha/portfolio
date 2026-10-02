@@ -1,4 +1,5 @@
 export * from './About';
+export * from './AiChat';
 export * from './Experience';
 export * from './Footer';
 export * from './Hero';
