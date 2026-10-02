@@ -149,7 +149,7 @@ export const experiences: Experience[] = [
     company: 'A5 Labs',
     location: 'Foster City, California, United States (Remote)',
     startDate: 'October 2025',
-    endDate: 'May 2026',
+    endDate: 'October 2026',
     description: [
       'Drove a monorepo-wide TypeScript initiative across 6+ packages, reducing production type-related bugs by 98%.',
       'Delivered a zero-maintenance translation solution in 30 minutes, opening China market and saving weeks of cross-team work.',
@@ -403,7 +403,7 @@ export const aboutMe = {
   email: 'sohailshrestha2@gmail.com',
   github: 'https://github.com/sohail-shrestha',
   linkedin: 'https://www.linkedin.com/in/sohail-shrestha-84a04a143/',
-  resume: '/Sohail_Shrestha_CV.pdf',
+  resume: '/Sohail_CV.pdf',
   getEmailLink() {
     const encodedSubject = encodeURIComponent(emailTemplate.subject);
     const encodedBody = encodeURIComponent(emailTemplate.body);

@@ -339,7 +339,7 @@ const Experience = () => {
           className='text-center mt-10'
         >
           <motion.a
-            href='/Sohail_Shrestha_CV.pdf'
+            href='/Sohail_CV.pdf'
             target='_blank'
             rel='noopener noreferrer'
             whileHover={{ y: -2 }}
